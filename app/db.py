@@ -11,13 +11,13 @@ import copy
 import os
 
 # load data files
-attraction_db_file = open('app/attraction_db.json')
+attraction_db_file = open('attraction_db.json')
 
 # create user db if it does not exist
-if not os.path.isfile('app/user_db.json'):
-    with open('app/user_db.json', "w+") as user_db_file:
+if not os.path.isfile('user_db.json'):
+    with open('user_db.json', "w+") as user_db_file:
         json.dump([], user_db_file, indent=4)
-user_db_file = open('app/user_db.json')
+user_db_file = open('user_db.json')
 
 ATTRACTION_DB = json.load(attraction_db_file)
 USER_DB = json.load(user_db_file)
@@ -66,7 +66,7 @@ def get_user_profile(session):
         DATATYPE_TO_DB["user"].append(new_user_profile)
 
         # write to the database
-        with open('app/user_db.json', "w+") as user_db_file:
+        with open('user_db.json', "w+") as user_db_file:
             json.dump(DATATYPE_TO_DB["user"], user_db_file, indent=4)
 
         result = new_user_profile
@@ -117,7 +117,7 @@ def update_user_parameters(dialogflow_parameters, session, ignore_empty=True):
             break
 
     # rewrite the databse file
-    with open('app/user_db.json', "w+") as user_db_file:
+    with open('user_db.json', "w+") as user_db_file:
         json.dump(DATATYPE_TO_DB["user"], user_db_file, indent=4)
 
     return user_profile
@@ -135,5 +135,5 @@ def remove_user_data(session):
     DATATYPE_TO_DB["user"].remove(user_profile)
 
     # rewrite the db file
-    with open('app/user_db.json', "w+") as user_db_file:
+    with open('user_db.json', "w+") as user_db_file:
         json.dump(DATATYPE_TO_DB["user"], user_db_file, indent=4)
