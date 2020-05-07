@@ -85,7 +85,7 @@ def process_attraction(query_text, parameters, intent, session):
                 ])
             }
     continue_search = False
-    if intent == "Attraction-Recommend - update parameters":
+    if intent == "Attraction-Recommend - refine_search":
         # update parameters
         # since this is updating information
         # we should only update parameters that are NOT EMPTY
