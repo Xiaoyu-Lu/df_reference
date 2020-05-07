@@ -77,31 +77,62 @@ def process_attraction(query_text, parameters, intent, session):
     """
     This method handle all requests about attraction
     """
-
-    # continue_search = False
-    if intent == "Attraction-Recommend":
+    continue_search = False
+    if intent == "Attraction-Recommend - update parameters":
         # update parameters
+        # since this is updating information
+        # we should only update parameters that are NOT EMPTY
         updated_user_profile = update_user_parameters(parameters, session, ignore_empty=True)
-        # print('user_profile :',updated_user_profile)
-        if not updated_user_profile:
-            # suggest parameters that the user has not yet given
-            return json.dumps(
-                {
-                    "fulfillmentText": random.choice(
-                        [
-                            "Sorry, but the information you gave is already"
-                            + " in the request. Would you mind adding another"
-                            + " piece of information?",
-                            "The information is already given. Mind adding"
-                            + " some other information?",
-                            "Sorry, but the information is already given. "
-                            + "Could you add some other information?",
-                        ]
-                    )
 
-                
-                }
-            )
+        # If we can't update anything new. Prompt the user to try again.
+        if updated_user_profile is None:
+            return {
+                "fulfillmentText": random.choice([
+                    "Sorry, I couldn't find anything new from what you just said. Would you mind trying again?",
+                    "I'm sorry that I couldn't get anything new from what you just said. Could you try again?"
+                ])
+            }
+
+        # only continue search with the updated parameters if there is anything new
+        # given by the user
+        continue_search = True
+
+    if intent == "Attraction-Recommend" or continue_search:
+        if intent == "Attraction-Recommend":
+            # update parameters
+            # since this is the beginning of the conversation
+            # we should not ignore empty parameters because that is the user's initial request
+            # 
+            # UNLESS this logic is called with should_start_search, meaning this block of code
+            # is used just for the search with the already updated parameters from a different
+            # intent block
+            updated_user_profile = update_user_parameters(parameters, session, ignore_empty=False)
+
+        # prompt the user to give more information if nothing is given
+        if is_empty_parameter_dict(parameters):
+            return {
+                "fulfillmentText": random.choice([
+                    "Sure! Can you tell me more?",
+                    "My pleasure! Can you tell me more?"
+                ])
+            }
+
+        if intent == "Attraction-Recommend":
+            # we also need to clean any stored results because this is an entirely new request
+            # 
+            # UNLESS this logic is called with should_start_search, meaning this block of code
+            # is used just for the search with the already updated parameters from a different
+            # intent block
+            update_search_results_for_user([], "attraction", session)
+
+        # prompt the user again if nothing is changed
+        if updated_user_profile is None:
+            return {
+                "fulfillmentText": random.choice([
+                    "Sorry, but you already give all the information. Could you add more?",
+                    "Sorry, the information is already given. Would you mind adding some different information?"
+                ])
+            }
 
         # get new user data
         user_parameters = updated_user_profile["parameters"]
