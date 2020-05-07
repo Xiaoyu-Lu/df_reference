@@ -33,8 +33,11 @@ def process_dialogflow_request():
     if "Attraction" in intent:
         return process_attraction(query_text, parameters, intent, session)
 
+    if len(request.json["queryResult"]["intent"]) > 2:
+        is_end = request.json["queryResult"]["intent"]["endInteraction"]
+
     # remove user data if the session is ended
-    if intent == "end of conversation":
+    if intent == is_end:
         remove_user_data(session)
 
         return {
