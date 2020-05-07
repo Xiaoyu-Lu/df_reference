@@ -7,8 +7,9 @@ import copy
 from flask import Flask
 from flask import request
 from db import update_user_parameters
+from db import update_search_results_for_user
 from db import remove_user_data
-
+from db import search
 
 app = Flask(__name__)
 
@@ -76,31 +77,90 @@ def process_attraction(query_text, parameters, intent, session):
     """
 
     continue_search = False
-    if intent == "Attraction-Recommend":
-        # update parameters
-        updated_user_profile = update_user_parameters(parameters, session, ignore_empty=True)
 
+
+    if intent == "Attraction-Recommend" or continue_search:
+        if intent == "Attraction-Recommend":
+            # update parameters
+            # since this is the beginning of the conversation
+            # we should not ignore empty parameters because that is the user's initial request
+            # 
+            # UNLESS this logic is called with continue_search, meaning this block of code
+            # is used just for the search with the already updated parameters from a different
+            # intent block
+            updated_user_profile = update_user_parameters(parameters, session, ignore_empty=False)
+
+        # prompt the user to give more information if nothing is given
+        if is_empty_parameter_dict(parameters):
+            return {
+                "fulfillmentText": random.choice([
+                    "Sure! Can you tell me more, the name of the attraction or area you'd like to go?",
+                    "My pleasure! Can you tell me what tpye or price range do you expect?"
+                ])
+            }
+
+        if intent == "Attraction-Recommend":
+            # we also need to clean any stored results because this is an entirely new request
+            # 
+            # UNLESS this logic is called with should_start_search, meaning this block of code
+            # is used just for the search with the already updated parameters from a different
+            # intent block
+            update_search_results_for_user([], "attraction", session)
+
+        # prompt the user again if nothing is changed
         if not updated_user_profile:
-            # suggest parameters that the user has not yet given
-            return json.dumps(
-                {
-                    "fulfillmentText": random.choice(
-                        [
-                            "Sorry, but the information you gave is already"
-                            + " in the request. Would you mind adding another"
-                            + " piece of information?",
-                            "The information is already given. Mind adding"
-                            + " some other information?",
-                            "Sorry, but the information is already given. "
-                            + "Could you add some other information?",
-                        ]
-                    )
+            return {
+                "fulfillmentText": random.choice([
+                    "Sorry, but you already give all the information. Could you add more?",
+                    "Sorry, the information is already given. Would you mind adding some different information?"
+                ])
+            }
 
-                
-                }
-            )
+        # extract parameters for search and convert the names to database field names
+        search_parameters = dict()
+        for entity_name in updated_user_profile["parameters"]:
+            search_parameters[entity_name] = updated_user_profile["parameters"][entity_name]
+        
+        # start search
+        results = search(search_parameters, "attraction")
 
-        continue_search = True
+        # nothing is found
+        if len(results) == 0:
+            return {
+                "fulfillmentText": random.choice([
+                    "Unfortunately, I couldn't find any matching attraction for you. Could you try something different?",
+                    "Sorry, but I wasn't able to find a matching attraction for you. Can you change some of your requests?"
+                ])
+            }
+
+        # too many results
+        if len(results) > 3:
+            return {
+                "fulfillmentText": random.choice([
+                    "Sure! But I found {} attractions that match your needs. Can you add more information to help narrow it down?".format(len(results)),
+                    "No problem! But I found {} attractions that match your needs. Could you help narrow it down with more information?".format(len(results)),
+                ])
+            }
+
+        # update search results here because we need to store them for the next interaction
+        # so that we know what was there previously
+        update_search_results_for_user(results, "attraction", session)
+
+        if len(results) == 1:
+            return {
+                "fulfillmentText": random.choice([
+                    "I found it! Do you want more information about it now?",
+                    "Good news! I found the attraction. Do you want the address and phone number now?"
+                ])
+            }
+
+        # report details about the alternatives
+        return {
+            "fulfillmentText": random.choice([
+                "I found {} attractions for you.".format(len(results)),
+                "There are {} attractions that match your needs.".format(len(results))
+            ])
+        }
 
 
     if intent == "Attraction-Recommend - refine_search":

@@ -31,6 +31,85 @@ DATATYPE_TO_DB = {
     "user": USER_DB
 }
 
+def search(parameters, data_type):
+    """
+    Use the parameters to find matching documents. 
+
+    Please make sure that the keys in parameters have the same name
+    in the database. Entity names are DIFFERENT from databse field names.
+
+    Also, parameters with empty values will be IGNORED.
+
+    Just remember, process the parameters given by Dialogflow before passing
+    it to this search method.
+    """
+
+    global DATATYPE_TO_DB
+
+    results = []
+
+    # delete empty parameters
+    non_empty_parameters = dict()
+    for field in parameters:
+        if len(parameters[field].strip()) > 0:
+            non_empty_parameters[field] = parameters[field]
+
+    for document in DATATYPE_TO_DB[data_type]:
+        # skip if any parameter does not match
+        is_not_a_match = False
+        for field in non_empty_parameters:
+            if document[field] != non_empty_parameters[field]:
+                is_not_a_match = True
+                break
+
+        if is_not_a_match:
+            continue
+        
+        results.append(document)
+
+    return results
+
+def search_from_results(parameters, data_type, session):
+    """
+    Use the parameters to search within the matched results of a user.
+    
+    Please make sure that the keys in parameters have the same name
+    in the database. Entity names are DIFFERENT from databse field names.
+
+    Also, parameters with empty values will be IGNORED.
+
+    Just remember, process the parameters given by Dialogflow before passing
+    it to this search method.
+    """
+
+    global DATATYPE_TO_DB
+
+    results = []
+
+    # get the user results and also make sure 
+    # there exists a user profile to update
+    user_results = get_user_profile(session)["results"][data_type]
+
+    # delete empty parameters
+    non_empty_parameters = dict()
+    for field in parameters:
+        if len(parameters[field].strip()) > 0:
+            non_empty_parameters[field] = parameters[field]
+
+    for document in user_results:
+        # skip if any parameter does not match
+        is_not_a_match = False
+        for field in non_empty_parameters:
+            if document[field] != non_empty_parameters[field]:
+                is_not_a_match = True
+                break
+
+        if is_not_a_match:
+            continue
+        
+        results.append(document)
+
+    return results
 
 def get_user_profile(session):
     """
@@ -121,7 +200,46 @@ def update_user_parameters(dialogflow_parameters, session, ignore_empty=True):
         json.dump(DATATYPE_TO_DB["user"], user_db_file, indent=4)
 
     return user_profile
+    
+def update_search_results_for_user(results, data_type, session):
+    """
+    Update matched results for the specified user.
 
+    results is a list of documents from the database.
+    (i.e. what's returned from search() method in this file)
+
+    data_type is one of the following:
+    1) "attraction"
+
+
+    Return True if succeed. Return False sinece:
+    1) nothing is updated
+    """
+
+    global DATATYPE_TO_DB
+
+    # get the user profile and also make sure 
+    # there exists a user profile to update
+    user_profile = get_user_profile(session)
+
+    # no need to update anything if nothing is changed
+    if (
+        user_profile["results"][data_type] is not None
+        and user_profile["results"][data_type] == results
+    ):
+        return None
+    
+    # update profile
+    user_profile["results"][data_type] = results if len(results) > 0 else None
+
+    # search and update the database
+    for index, document in enumerate(DATATYPE_TO_DB["user"]):
+        if document["session"] == session:
+            DATATYPE_TO_DB["user"][index] = user_profile
+
+    # rewrite the db file with new results
+    with open('user_db.json', "w+") as user_db_file:
+        json.dump(DATATYPE_TO_DB["user"], user_db_file, indent=4)
 
 def remove_user_data(session):
     """
