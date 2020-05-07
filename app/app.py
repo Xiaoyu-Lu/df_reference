@@ -22,7 +22,7 @@ def process_dialogflow_request():
     # return success if calling from db_init_trigger()
     if "python-requests" in request.headers["User-Agent"]:
         return "", 200
-        
+
     # show welcome message if viewing from a broswer
     msg_content = "This is the webhook of Dom&Loewi."
     if is_browser(request.headers["User-Agent"]):
@@ -32,6 +32,7 @@ def process_dialogflow_request():
     parameters = request.json["queryResult"]["parameters"]
     intent = request.json["queryResult"]["intent"]["displayName"]
     session = request.json["session"]
+
 
     # process based on the domain
     if "Attraction-Recommend" in intent:
