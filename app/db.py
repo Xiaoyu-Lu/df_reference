@@ -53,11 +53,14 @@ def search(parameters, data_type):
     for field in parameters:
         if len(parameters[field].strip()) > 0:
             non_empty_parameters[field] = parameters[field]
-
+    print('para',non_empty_parameters)
     for document in DATATYPE_TO_DB[data_type]:
         # skip if any parameter does not match
         is_not_a_match = False
         for field in non_empty_parameters:
+            
+
+
             if document[field] != non_empty_parameters[field]:
                 is_not_a_match = True
                 break
@@ -171,10 +174,11 @@ def update_user_parameters(dialogflow_parameters, session, ignore_empty=True):
     # get the user profile and also make sure 
     # there exists a user profile to update
     user_profile = get_user_profile(session)
-
+    # print('user_profile',user_profile)
     # update non-empty parameters
     has_anything_new = False
     for entity_name in dialogflow_parameters:
+        # print('entity_name', entity_name)
         if (
             entity_name not in user_profile["parameters"]
             or (
@@ -200,7 +204,7 @@ def update_user_parameters(dialogflow_parameters, session, ignore_empty=True):
         json.dump(DATATYPE_TO_DB["user"], user_db_file, indent=4)
 
     return user_profile
-    
+
 def update_search_results_for_user(results, data_type, session):
     """
     Update matched results for the specified user.
@@ -228,7 +232,7 @@ def update_search_results_for_user(results, data_type, session):
         and user_profile["results"][data_type] == results
     ):
         return None
-    
+    print('update')
     # update profile
     user_profile["results"][data_type] = results if len(results) > 0 else None
 

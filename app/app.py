@@ -56,6 +56,7 @@ def process_dialogflow_request():
         }
     )
 
+
 def is_empty_parameter_dict(parameters):
     """
     Check if the current parameter dict is empty.
@@ -72,62 +73,51 @@ def is_empty_parameter_dict(parameters):
     return True
 
 
-
-
 def process_attraction(query_text, parameters, intent, session):
     """
     This method handle all requests about attraction
     """
 
-    continue_search = False
-
-
-    if intent == "Attraction-Recommend" or continue_search:
-        if intent == "Attraction-Recommend":
-            # update parameters
-            # since this is the beginning of the conversation
-            # we should not ignore empty parameters because that is the user's initial request
-            # 
-            # UNLESS this logic is called with continue_search, meaning this block of code
-            # is used just for the search with the already updated parameters from a different
-            # intent block
-            updated_user_profile = update_user_parameters(parameters, session, ignore_empty=False)
-
-        # prompt the user to give more information if nothing is given
-        if is_empty_parameter_dict(parameters):
-            return {
-                "fulfillmentText": random.choice([
-                    "Sure! Can you tell me more, the name of the attraction or area you'd like to go?",
-                    "My pleasure! Can you tell me what tpye or price range do you expect?"
-                ])
-            }
-
-        if intent == "Attraction-Recommend":
-            # we also need to clean any stored results because this is an entirely new request
-            # 
-            # UNLESS this logic is called with should_start_search, meaning this block of code
-            # is used just for the search with the already updated parameters from a different
-            # intent block
-            update_search_results_for_user([], "attraction", session)
-
-        # prompt the user again if nothing is changed
+    # continue_search = False
+    if intent == "Attraction-Recommend":
+        # update parameters
+        updated_user_profile = update_user_parameters(parameters, session, ignore_empty=True)
+        # print('user_profile :',updated_user_profile)
         if not updated_user_profile:
+            # suggest parameters that the user has not yet given
+            return json.dumps(
+                {
+                    "fulfillmentText": random.choice(
+                        [
+                            "Sorry, but the information you gave is already"
+                            + " in the request. Would you mind adding another"
+                            + " piece of information?",
+                            "The information is already given. Mind adding"
+                            + " some other information?",
+                            "Sorry, but the information is already given. "
+                            + "Could you add some other information?",
+                        ]
+                    )
+
+                
+                }
+            )
+
+        # get new user data
+        user_parameters = updated_user_profile["parameters"]
+        # print('user_parameters',user_parameters)
+        # if no parameter present, ask the user to give some
+        if is_empty_parameter_dict(user_parameters):
             return {
                 "fulfillmentText": random.choice([
-                    "Sorry, but you already give all the information. Could you add more?",
-                    "Sorry, the information is already given. Would you mind adding some different information?"
+                    "Sure! Can you tell me more?",
+                    "My pleasure! Can you tell me more?"
                 ])
             }
 
-        # extract parameters for search and convert the names to database field names
-        search_parameters = dict()
-        for entity_name in updated_user_profile["parameters"]:
-            search_parameters[entity_name] = updated_user_profile["parameters"][entity_name]
-        
-        # start search
-        results = search(search_parameters, "attraction")
-
-        # nothing is found
+        # otherwise start search and return results
+        results = search(user_parameters, "attraction")
+        print('get %d results'%len(results))
         if len(results) == 0:
             return {
                 "fulfillmentText": random.choice([
@@ -136,18 +126,20 @@ def process_attraction(query_text, parameters, intent, session):
                 ])
             }
 
+        # update search results here because we need to store them for the next interaction
+        # so that we know what was there previously
+        print('update!!!')
+        update_search_results_for_user(results, "attraction", session)
+
         # too many results
-        if len(results) > 3:
+        if len(results) > 2:
+            print('cool')
             return {
                 "fulfillmentText": random.choice([
                     "Sure! But I found {} attractions that match your needs. Can you add more information to help narrow it down?".format(len(results)),
                     "No problem! But I found {} attractions that match your needs. Could you help narrow it down with more information?".format(len(results)),
                 ])
             }
-
-        # update search results here because we need to store them for the next interaction
-        # so that we know what was there previously
-        update_search_results_for_user(results, "attraction", session)
 
         if len(results) == 1:
             return {
@@ -157,26 +149,13 @@ def process_attraction(query_text, parameters, intent, session):
                 ])
             }
 
-        # report details about the alternatives
+        # report details about the alternatives 
         return {
             "fulfillmentText": random.choice([
                 "I found {} attractions for you.".format(len(results)),
                 "There are {} attractions that match your needs.".format(len(results))
             ])
         }
-
-
-    if intent == "Attraction-Recommend - refine_search":
-
-        # update parameters
-        # since this is updating information
-        # we should only update parameters that are NOT EMPTY
-        updated_user_profile = update_user_parameters(parameters, session, ignore_empty=True)
-
-        # only continue search with the updated parameters if there is anything new
-        # given by the user
-        if not updated_user_profile:
-            continue_search = True
 
 if __name__ == "__main__":
     port = os.environ.get(

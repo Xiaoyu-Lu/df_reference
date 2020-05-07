@@ -4,10 +4,7 @@
         "area": "east",
         "entrance fee": "?",
         "id": "1",
-        "location": [
-            52.208789,
-            0.154883
-        ],
+        "location": "Cambridge",
         "name": "abbey pool and astroturf pitch",
         "openhours": "?",
         "phone": "01223902088",
@@ -20,10 +17,7 @@
         "area": "centre",
         "entrance fee": "?",
         "id": "2",
-        "location": [
-            52.208699,
-            0.12006
-        ],
+        "location": "Cambridge",
         "name": "adc theatre",
         "openhours": "?",
         "phone": "01223300085",
@@ -36,10 +30,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "3",
-        "location": [
-            52.2078083333333,
-            0.125616666666667
-        ],
+        "location": "Cambridge",
         "name": "all saints church",
         "openhours": "it opens normally daily from 9 a.m. to 5 p.m., at other times the key can be borrowed from a nearby key holder.",
         "phone": "01223452587",
@@ -52,10 +43,7 @@
         "area": "centre",
         "entrance fee": "5 pounds",
         "id": "4",
-        "location": [
-            52.20478,
-            0.11975
-        ],
+        "location": "Cambridge",
         "name": "ballare",
         "openhours": "it opens from 10:30 p.m. to 03:30 a.m on thursday, from 11:00 p.m. to 04:00 a.m. on friday, from 10:00 p.m. to 03:30 a.m. on saturday, and from 10:00 p.m. to 02:30 a.m. on monday",
         "phone": "01223364222",
@@ -68,10 +56,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "5",
-        "location": [
-            52.207409,
-            0.126738
-        ],
+        "location": "Cambridge",
         "name": "broughton house gallery",
         "openhours": "?",
         "phone": "01223314960",
@@ -84,10 +69,7 @@
         "area": "south",
         "entrance fee": "free",
         "id": "6",
-        "location": [
-            52.1725982,
-            0.1112224
-        ],
+        "location": "Cambridge",
         "name": "byard art",
         "openhours": "it opens from 09:30 a.m. to 5:30 p.m. from monday to saturday, and from 11:00 a.m. to 4:00 p.m. on sunday",
         "phone": "01223464646",
@@ -100,10 +82,7 @@
         "area": "west",
         "entrance fee": "free",
         "id": "7",
-        "location": [
-            52.221949,
-            0.094948
-        ],
+        "location": "Cambridge",
         "name": "cafe jello gallery",
         "openhours": "it opens from 10:30 a.m. to 5:30 p.m. thursday to saturday",
         "phone": "01223312112",
@@ -116,10 +95,7 @@
         "area": "east",
         "entrance fee": "?",
         "id": "8",
-        "location": [
-            52.21247,
-            0.15619
-        ],
+        "location": "Cambridge",
         "name": "camboats",
         "openhours": "?",
         "phone": "01223902112",
@@ -132,10 +108,7 @@
         "area": "west",
         "entrance fee": "3.50 pounds",
         "id": "9",
-        "location": [
-            52.210766,
-            0.114795
-        ],
+        "location": "Cambridge",
         "name": "cambridge and county folk museum",
         "openhours": "it opens from monday to saturday, 10 a.m. to 5 p.m. while on sunday it opens from 2 p.m. to 5 p.m.",
         "phone": "01223355159",
@@ -148,10 +121,7 @@
         "area": "centre",
         "entrance fee": "?",
         "id": "10",
-        "location": [
-            52.2034781571435,
-            0.119176917855308
-        ],
+        "location": "Cambridge",
         "name": "cambridge arts theatre",
         "openhours": "?",
         "phone": "01223503333",
@@ -164,10 +134,7 @@
         "area": "east",
         "entrance fee": "free",
         "id": "11",
-        "location": [
-            52.202271,
-            0.14702
-        ],
+        "location": "Cambridge",
         "name": "cambridge artworks",
         "openhours": "?",
         "phone": "01223902168",
@@ -180,10 +147,7 @@
         "area": "west",
         "entrance fee": "free",
         "id": "12",
-        "location": [
-            52.198744,
-            0.113364
-        ],
+        "location": "Cambridge",
         "name": "cambridge book and print gallery",
         "openhours": "it opens from 10:00 a.m. to 5:00 p.m. from tuesday to saturday",
         "phone": "01223694264",
@@ -196,10 +160,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "13",
-        "location": [
-            52.206084,
-            0.118268
-        ],
+        "location": "Cambridge",
         "name": "cambridge contemporary art",
         "openhours": "it opens from 11:00 a.m. to 4:00 p.m. on sunday, and from 09:00 a.m. to 5:30 p.m. from monday to saturday",
         "phone": "01223324222",
@@ -212,10 +173,7 @@
         "area": "east",
         "entrance fee": "5 pounds",
         "id": "14",
-        "location": [
-            52.21247,
-            0.15619
-        ],
+        "location": "Cambridge",
         "name": "cambridge museum of technology",
         "openhours": "it opens on sunday from 2:00 p.m. to 5:00 p.m.",
         "phone": "01223368650",
@@ -228,10 +186,7 @@
         "area": "centre",
         "entrance fee": "4 pounds",
         "id": "15",
-        "location": [
-            52.19525,
-            0.126
-        ],
+        "location": "Cambridge",
         "name": "cambridge university botanic gardens",
         "openhours": "it opens from 10:00 a.m. to 6:00 p.m. from april to september, from 10:00 a.m. to 5:00 p.m. in february march and october, and from 10:00 a.m. to 4:00 p.m. from november to january",
         "phone": "01223336265",
@@ -244,10 +199,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "16",
-        "location": [
-            52.204788,
-            0.1214
-        ],
+        "location": "Cambridge",
         "name": "castle galleries",
         "openhours": "it opens from 09:00 a.m. to 6:00 p.m. every day except wednesday when it opens from 09:00 a.m. to 8:00 p.m., and sunday when it opens from 11:00 a.m. to 5:00 p.m.",
         "phone": "01223307402",
@@ -260,10 +212,7 @@
         "area": "east",
         "entrance fee": "?",
         "id": "17",
-        "location": [
-            52.186045,
-            0.157515
-        ],
+        "location": "Cambridge",
         "name": "cherry hinton hall and grounds",
         "openhours": "?",
         "phone": "01223446104",
@@ -276,10 +225,7 @@
         "area": "east",
         "entrance fee": "free",
         "id": "18",
-        "location": [
-            52.186045,
-            0.157515
-        ],
+        "location": "Cambridge",
         "name": "cherry hinton water play",
         "openhours": "it opens from may to september",
         "phone": "01223446100",
@@ -292,10 +238,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "19",
-        "location": [
-            52.20635,
-            0.121727777777778
-        ],
+        "location": "Cambridge",
         "name": "christ's college",
         "openhours": "it opens normally daily from 9 a.m. to 5 p.m. except easter term",
         "phone": "01223334900",
@@ -308,10 +251,7 @@
         "area": "west",
         "entrance fee": "free",
         "id": "20",
-        "location": [
-            52.2128888888889,
-            0.103127777777778
-        ],
+        "location": "Cambridge",
         "name": "churchill college",
         "openhours": "it opens normally daily from 9 a.m. to 5 p.m. except easter term",
         "phone": "01223336233",
@@ -324,10 +264,7 @@
         "area": "south",
         "entrance fee": "?",
         "id": "21",
-        "location": [
-            52.1901222222222,
-            0.136991666666667
-        ],
+        "location": "Cambridge",
         "name": "cineworld cinema",
         "openhours": "?",
         "phone": "00872208000",
@@ -340,10 +277,7 @@
         "area": "west",
         "entrance fee": "2.50 pounds",
         "id": "22",
-        "location": [
-            52.2048527777778,
-            0.115422222222222
-        ],
+        "location": "Cambridge",
         "name": "clare college",
         "openhours": "it opens normally daily from 9 a.m. to 5 p.m. except easter term",
         "phone": "01223333200",
@@ -356,10 +290,7 @@
         "area": "west",
         "entrance fee": "free",
         "id": "23",
-        "location": [
-            52.2040527777778,
-            0.104480555555556
-        ],
+        "location": "Cambridge",
         "name": "clare hall",
         "openhours": "it opens normally daily from 9 a.m. to 5 p.m. except easter term",
         "phone": "01223332360",
@@ -372,10 +303,7 @@
         "area": "centre",
         "entrance fee": "5 pounds",
         "id": "24",
-        "location": [
-            52.195173,
-            0.131644
-        ],
+        "location": "Cambridge",
         "name": "club salsa",
         "openhours": "it opens at the university social club from 9:30 p.m. to 11:30 p.m. on wednesday, and from 10:00 p.m. to 01:00 a.m. on friday",
         "phone": "07782218745",
@@ -388,10 +316,7 @@
         "area": "centre",
         "entrance fee": "2 pounds",
         "id": "25",
-        "location": [
-            52.2028416666667,
-            0.117844444444444
-        ],
+        "location": "Cambridge",
         "name": "corpus christi",
         "openhours": "it opens normally daily from 9 a.m. to 5 p.m. except easter term",
         "phone": "01223338000",
@@ -404,10 +329,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "26",
-        "location": [
-            52.2013777777778,
-            0.125194444444444
-        ],
+        "location":"Cambridge",
         "name": "downing college",
         "openhours": "it opens daily from 9 a.m. to 5 p.m. except during easter term",
         "phone": "01223334860",
@@ -420,10 +342,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "27",
-        "location": [
-            52.203572,
-            0.123778
-        ],
+        "location": "Cambridge",
         "name": "emmanuel college",
         "openhours": "it opens normally daily from 9 a.m. to 5 p.m. except easter term",
         "phone": "01223334200",
@@ -436,10 +355,7 @@
         "area": "east",
         "entrance fee": "?",
         "id": "28",
-        "location": [
-            52.21401,
-            0.14789
-        ],
+        "location": "Cambridge",
         "name": "funky fun house",
         "openhours": "?",
         "phone": "01223304705",
@@ -452,10 +368,7 @@
         "area": "east",
         "entrance fee": "free",
         "id": "29",
-        "location": [
-            52.183498,
-            0.22186
-        ],
+        "location": "Cambridge",
         "name": "gallery at twelve a high street",
         "openhours": "?",
         "phone": "01223295264",
@@ -468,10 +381,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "30",
-        "location": [
-            52.205861,
-            0.117972
-        ],
+        "location": "Cambridge",
         "name": "gonville and caius college",
         "openhours": "it opens normally daily from 9 a.m. to 5 p.m. except easter term",
         "phone": "01223332400",
@@ -484,10 +394,7 @@
         "area": "centre",
         "entrance fee": "2 pounds",
         "id": "31",
-        "location": [
-            52.2049472222222,
-            0.118222222222222
-        ],
+        "location": "Cambridge",
         "name": "great saint mary's church",
         "openhours": "it opens normally daily from 9 a.m. to 5 p.m.",
         "phone": "01223350914",
@@ -500,10 +407,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "32",
-        "location": [
-            52.2057694444444,
-            0.120033333333333
-        ],
+        "location": "Cambridge",
         "name": "holy trinity church",
         "openhours": "it opens normally daily from 9 a.m. to 5 p.m.",
         "phone": "01223355397",
@@ -516,10 +420,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "33",
-        "location": [
-            52.200692,
-            0.133253
-        ],
+        "location": "Cambridge",
         "name": "hughes hall",
         "openhours": "it opens normally daily from 9 a.m. to 5 p.m. except easter term",
         "phone": "01223334898",
@@ -532,10 +433,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "34",
-        "location": [
-            52.209353,
-            0.125342
-        ],
+        "location": "Cambridge",
         "name": "jesus college",
         "openhours": "it opens normally daily from 9 a.m. to 5 p.m. except easter term",
         "phone": "01223339485",
@@ -548,10 +446,7 @@
         "area": "north",
         "entrance fee": "?",
         "id": "35",
-        "location": [
-            52.220328,
-            0.115149
-        ],
+        "location": "Cambridge",
         "name": "jesus green outdoor pool",
         "openhours": "?",
         "phone": "01223302579",
@@ -564,10 +459,7 @@
         "area": "centre",
         "entrance fee": "5 pounds",
         "id": "36",
-        "location": [
-            52.204192,
-            0.119187
-        ],
+        "location":"Cambridge",
         "name": "kambar",
         "openhours": "it opens from 10:00 p.m. to 4:00 a.m. depending on whether there is an event on or not",
         "phone": "01223842725",
@@ -580,10 +472,7 @@
         "area": "west",
         "entrance fee": "free",
         "id": "37",
-        "location": [
-            52.212405,
-            0.113075
-        ],
+        "location": "Cambridge",
         "name": "kettle's yard",
         "openhours": "it opens from 11:30 a.m. to 5:00 p.m. tuesday to sunday",
         "phone": "01223748100",
@@ -596,10 +485,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "38",
-        "location": [
-            52.204289,
-            0.117269
-        ],
+        "location": "Cambridge",
         "name": "king's college",
         "openhours": "it opens normally daily from 9 a.m. to 5 p.m. except easter term",
         "phone": "01223331100",
@@ -612,10 +498,7 @@
         "area": "north",
         "entrance fee": "?",
         "id": "39",
-        "location": [
-            52.23171,
-            0.122415
-        ],
+        "location": "Cambridge",
         "name": "kings hedges learner pool",
         "openhours": "?",
         "phone": "01223353248",
@@ -628,10 +511,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "40",
-        "location": [
-            52.2005111111111,
-            0.119883333333333
-        ],
+        "location": "Cambridge",
         "name": "little saint mary's church",
         "openhours": "it opens normally daily from 9 a.m. to 5 p.m.",
         "phone": "01223366202",
@@ -644,10 +524,7 @@
         "area": "west",
         "entrance fee": "free",
         "id": "41",
-        "location": [
-            52.222053,
-            0.095086
-        ],
+        "location":"Cambridge",
         "name": "lynne strover gallery",
         "openhours": "it opens from 10:00 a.m. to 5:00 p.m. thursday to saturday",
         "phone": "01223295264",
@@ -660,10 +537,7 @@
         "area": "west",
         "entrance fee": "free",
         "id": "42",
-        "location": [
-            52.210403,
-            0.115803
-        ],
+        "location":"Cambridge",
         "name": "magdalene college",
         "openhours": "it opens normally daily from 9 a.m. to 5 p.m. except easter term",
         "phone": "01223332138",
@@ -676,10 +550,7 @@
         "area": "north",
         "entrance fee": "free",
         "id": "43",
-        "location": [
-            52.247361,
-            0.156627
-        ],
+        "location":"Cambridge",
         "name": "milton country park",
         "openhours": "always",
         "phone": "01223420060",
@@ -692,10 +563,7 @@
         "area": "centre",
         "entrance fee": "?",
         "id": "44",
-        "location": [
-            52.20571,
-            0.131061
-        ],
+        "location":"Cambridge",
         "name": "mumford theatre",
         "openhours": "?",
         "phone": "08451962320",
@@ -708,10 +576,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "45",
-        "location": [
-            52.205261,
-            0.11664
-        ],
+        "location":"Cambridge",
         "name": "museum of archaelogy and anthropology",
         "openhours": "it opens from 10:30 a.m. to 4:30 p.m. tuesday to saturday",
         "phone": "01223333516",
@@ -724,10 +589,7 @@
         "area": "west",
         "entrance fee": "free",
         "id": "46",
-        "location": [
-            52.20987,
-            0.111565
-        ],
+        "location":"Cambridge",
         "name": "museum of classical archaeology",
         "openhours": "it opens from 10:00 a.m. to 5:00 p.m. monday to friday",
         "phone": "01223335153",
@@ -740,10 +602,7 @@
         "area": "south",
         "entrance fee": "?",
         "id": "47",
-        "location": [
-            52.1896573155949,
-            0.137541476208324
-        ],
+        "location": "Cambridge",
         "name": "nusha",
         "openhours": "it opens from 5:00 p.m. to 01:30 a.m. on tuesday, friday and saturday, and from 5:00 p.m. to midnight on monday, wednesday, thursday and sunday.",
         "phone": "01223902158",
@@ -756,10 +615,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "48",
-        "location": [
-            52.2052638888889,
-            0.116641666666667
-        ],
+        "location":"Cambridge",
         "name": "old schools",
         "openhours": "it opens normally daily from 08:00 a.m. to 5:45 p.m.",
         "phone": "01223332320",
@@ -772,10 +628,7 @@
         "area": "centre",
         "entrance fee": "?",
         "id": "49",
-        "location": [
-            52.201275,
-            0.129935
-        ],
+        "location": "Cambridge",
         "name": "parkside pools",
         "openhours": "?",
         "phone": "01223446100",
@@ -788,10 +641,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "50",
-        "location": [
-            52.202611,
-            0.120658
-        ],
+        "location": "Cambridge",
         "name": "pembroke college",
         "openhours": "any time except may and june",
         "phone": "01223338100",
@@ -804,10 +654,7 @@
         "area": "west",
         "entrance fee": "free",
         "id": "51",
-        "location": [
-            52.228375,
-            0.0837527777777778
-        ],
+        "location": "Cambridge",
         "name": "people's portraits exhibition at girton college",
         "openhours": "it opens from 2:00 p.m. to 4:00 p.m. daily from february to july",
         "phone": "01223338901",
@@ -820,10 +667,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "52",
-        "location": [
-            52.2034781571435,
-            0.119176917855308
-        ],
+        "location": "Cambridge",
         "name": "primavera",
         "openhours": "it opens from 11:00 a.m. to 4:30 p.m. on sunday, from 10:00 a.m. to 5:00 p.m. from monday to friday, and from 10:00 a.m. to 5:30 p.m. on saturday",
         "phone": "01223357708",
@@ -836,10 +680,7 @@
         "area": "west",
         "entrance fee": "2.50 pounds",
         "id": "53",
-        "location": [
-            52.2018,
-            0.114239
-        ],
+        "location": "Cambridge",
         "name": "queens' college",
         "openhours": "monday to sunday 10 a.m. to 4:30 p.m.",
         "phone": "01223335511",
@@ -852,10 +693,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "54",
-        "location": [
-            52.206823,
-            0.131361
-        ],
+        "location": "Cambridge",
         "name": "regency gallery",
         "openhours": "?",
         "phone": "01223365454",
@@ -868,10 +706,7 @@
         "area": "north",
         "entrance fee": "?",
         "id": "55",
-        "location": [
-            52.229515,
-            0.111645
-        ],
+        "location": "Cambridge",
         "name": "riverboat georgina",
         "openhours": "?",
         "phone": "01223902091",
@@ -884,10 +719,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "56",
-        "location": [
-            52.20571,
-            0.131061
-        ],
+        "location": "Cambridge",
         "name": "ruskin gallery",
         "openhours": "?",
         "phone": "01245493131",
@@ -900,10 +732,7 @@
         "area": "east",
         "entrance fee": "free",
         "id": "57",
-        "location": [
-            52.20858,
-            0.148702
-        ],
+        "location": "Cambridge",
         "name": "saint barnabas press gallery",
         "openhours": "?",
         "phone": "01223902116",
@@ -916,10 +745,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "58",
-        "location": [
-            52.202839,
-            0.116394
-        ],
+        "location": "Cambridge",
         "name": "saint catharine's college",
         "openhours": "it opens normally daily from 9 a.m. to 5 p.m. except easter term",
         "phone": "01223338300",
@@ -932,10 +758,7 @@
         "area": "centre",
         "entrance fee": "2.50 pounds",
         "id": "59",
-        "location": [
-            52.208803,
-            0.117411
-        ],
+        "location":"Cambridge",
         "name": "saint john's college",
         "openhours": "it opens normally daily from 9 a.m. to 5 p.m. except easter term",
         "phone": "01223338600",
@@ -948,10 +771,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "60",
-        "location": [
-            52.19806,
-            0.123185
-        ],
+        "location": "Cambridge",
         "name": "scott polar museum",
         "openhours": "it opens from 10:00 a.m. to 4:00 p.m. from tuesday to saturday",
         "phone": "01223336540",
@@ -964,10 +784,7 @@
         "area": "centre",
         "entrance fee": "?",
         "id": "61",
-        "location": [
-            52.200975,
-            0.116298
-        ],
+        "location":"Cambridge",
         "name": "scudamores punting co",
         "openhours": "?",
         "phone": "01223359750",
@@ -980,10 +797,7 @@
         "area": "south",
         "entrance fee": "free",
         "id": "62",
-        "location": [
-            52.17674,
-            0.14559
-        ],
+        "location": "Cambridge",
         "name": "sheep's green and lammas land park fen causeway",
         "openhours": "it is open from may to sept",
         "phone": "01223302580",
@@ -996,10 +810,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "63",
-        "location": [
-            52.207464,
-            0.121342
-        ],
+        "location": "Cambridge",
         "name": "sidney sussex college",
         "openhours": "it opens daily from 9 a.m. to 5 p.m. except during easter term",
         "phone": "01223338800",
@@ -1012,10 +823,7 @@
         "area": "centre",
         "entrance fee": "4 pounds",
         "id": "64",
-        "location": [
-            52.203878,
-            0.12044
-        ],
+        "location":"Cambridge",
         "name": "soul tree nightclub",
         "openhours": "it opens from 9:30 p.m. to 02:00 a.m. from sunday to tuesday, from 9:00 p.m. to 02:00 a.m. on wednesday, and from 9:00 p.m. to 02:30 a.m. from thursday to saturday",
         "phone": "01223477900",
@@ -1028,10 +836,7 @@
         "area": "south",
         "entrance fee": "?",
         "id": "65",
-        "location": [
-            52.18568,
-            0.144638
-        ],
+        "location": "Cambridge",
         "name": "tenpin",
         "openhours": "?",
         "phone": "08715501010",
@@ -1044,10 +849,7 @@
         "area": "centre",
         "entrance fee": "?",
         "id": "66",
-        "location": [
-            52.20431,
-            0.119215
-        ],
+        "location":"Cambridge",
         "name": "the cambridge corn exchange",
         "openhours": "?",
         "phone": "01223357851",
@@ -1060,10 +862,7 @@
         "area": "centre",
         "entrance fee": "?",
         "id": "67",
-        "location": [
-            52.211939,
-            0.118661
-        ],
+        "location": "Cambridge",
         "name": "the cambridge punter",
         "openhours": "?",
         "phone": "07807718591",
@@ -1076,10 +875,7 @@
         "area": "east",
         "entrance fee": "?",
         "id": "68",
-        "location": [
-            52.186715,
-            0.17882
-        ],
+        "location": "Cambridge",
         "name": "the cherry hinton village centre",
         "openhours": "it opens from 09:00 a.m. to 8:00 p.m. on sunday, and from 09:00 a.m. to 10:00 p.m. from monday to saturday",
         "phone": "01223576412",
@@ -1092,10 +888,7 @@
         "area": "centre",
         "entrance fee": "5 pounds",
         "id": "69",
-        "location": [
-            52.206144,
-            0.120283
-        ],
+        "location": "Cambridge",
         "name": "the fez club",
         "openhours": "it opens on monday from 9 p.m. to 2 a.m.. it is closed on tuesday. from wednesday to saturday it opens from 9 p.m. to 2 a.m. and it is closed on sunday",
         "phone": "01223519224",
@@ -1108,10 +901,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "70",
-        "location": [
-            52.19855,
-            0.121785
-        ],
+        "location": "Cambridge",
         "name": "the fitzwilliam museum",
         "openhours": "from tuesday to saturday it opens from 10 a.m. to 5 p.m. while on sunday, monday and bank holidays it opens from 12 to 5 p.m.",
         "phone": "01223332900",
@@ -1124,10 +914,7 @@
         "area": "south",
         "entrance fee": "?",
         "id": "71",
-        "location": [
-            52.190325,
-            0.135755
-        ],
+        "location": "Cambridge",
         "name": "the junction",
         "openhours": "?",
         "phone": "01223511511",
@@ -1140,10 +927,7 @@
         "area": "centre",
         "entrance fee": "?",
         "id": "72",
-        "location": [
-            52.204746,
-            0.136515
-        ],
+        "location": "Cambridge",
         "name": "the man on the moon",
         "openhours": "?",
         "phone": "01223474144",
@@ -1156,10 +940,7 @@
         "area": "south",
         "entrance fee": "?",
         "id": "73",
-        "location": [
-            52.1725982,
-            0.1112224
-        ],
+        "location": "Cambridge",
         "name": "the place",
         "openhours": "it opens from 10:30 p.m. to 03:30 a.m. on tuesday, from 10:00 p.m. to 02:30 a.m. on thursday, from 10:00 p.m. to 04:00 a.m. on friday and saturday, and from 10:00 p.m. to 02:00 a.m. on sunday",
         "phone": "01223324600",
@@ -1172,10 +953,7 @@
         "area": "centre",
         "entrance fee": "1 pound",
         "id": "74",
-        "location": [
-            52.207081,
-            0.117622
-        ],
+        "location":"Cambridge",
         "name": "trinity college",
         "openhours": "it opens normally daily from 9 a.m. to 5 p.m. except easter term",
         "phone": "01223338400",
@@ -1188,10 +966,7 @@
         "area": "centre",
         "entrance fee": "?",
         "id": "75",
-        "location": [
-            52.20571,
-            0.131061
-        ],
+        "location": "Cambridge",
         "name": "vue cinema",
         "openhours": "?",
         "phone": "08712240240",
@@ -1204,10 +979,7 @@
         "area": "south",
         "entrance fee": "free",
         "id": "76",
-        "location": [
-            52.119551,
-            0.181018
-        ],
+        "location": "Cambridge",
         "name": "wandlebury country park",
         "openhours": "always",
         "phone": "01223243830",
@@ -1220,10 +992,7 @@
         "area": "west",
         "entrance fee": "?",
         "id": "77",
-        "location": [
-            52.254,
-            0.016478
-        ],
+        "location": "Cambridge",
         "name": "whale of a time",
         "openhours": "it opens from 09:30 a.m. to 6:00 p.m. daily",
         "phone": "01954781018",
@@ -1236,10 +1005,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "78",
-        "location": [
-            52.203117,
-            0.118928
-        ],
+        "location": "Cambridge",
         "name": "whipple museum of the history of science",
         "openhours": "it opens from 12:30 p.m. to 4:30 p.m. from monday to friday",
         "phone": "01223330906",
@@ -1252,10 +1018,7 @@
         "area": "centre",
         "entrance fee": "free",
         "id": "79",
-        "location": [
-            52.2002,
-            0.1385
-        ],
+        "location": "Cambridge",
         "name": "williams art and antiques",
         "openhours": "it opens from 11:00 a.m. to 6:00 p.m. from tuesday to friday, from 11:00 a.m. to 5:00 p.m. on saturday and sunday, and it is closed on monday",
         "phone": "01223311687",
