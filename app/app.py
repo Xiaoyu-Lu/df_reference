@@ -76,7 +76,7 @@ def process_attraction(query_text, parameters, intent, session):
     """
 
     continue_search = False
-    if intent == "add hotel info":
+    if intent == "Attraction-Recommend":
         # update parameters
         updated_user_profile = update_user_parameters(parameters, session, ignore_empty=True)
 
