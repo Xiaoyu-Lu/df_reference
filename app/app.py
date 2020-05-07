@@ -30,7 +30,7 @@ def process_dialogflow_request():
     session = request.json["session"]
 
     # process based on the domain
-    if "Attraction" in intent:
+    if "Attraction-Recommend" in intent:
         return process_attraction(query_text, parameters, intent, session)
 
     if len(request.json["queryResult"]["intent"]) > 2:
