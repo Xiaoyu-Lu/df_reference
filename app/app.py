@@ -82,13 +82,7 @@ def process_attraction(parameters, intent, session):
     """
     This method handle all requests about attraction
     """
-    if intent == "Attraction-Recommend":
-        return {
-                "fulfillmentText": random.choice([
-                    "testing testing",
-                    "great! go and find the bug"
-                ])
-            }
+
     continue_search = False
     if intent == "Attraction-Recommend - refine_search":
         # update parameters
