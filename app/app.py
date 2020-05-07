@@ -24,14 +24,13 @@ def process_dialogflow_request():
         return "<html><body><h1>{}</body></html>".format(msg_content)
 
     # process request
-    query_text = request.json["queryResult"]["queryText"]
     parameters = request.json["queryResult"]["parameters"]
     intent = request.json["queryResult"]["intent"]["displayName"]
     session = request.json["session"]
 
     # process based on the domain
     if "Attraction-Recommend" in intent:
-        return process_attraction(query_text, parameters, intent, session)
+        return process_attraction(parameters, intent, session)
 
     if len(request.json["queryResult"]["intent"]) > 2:
         is_end = request.json["queryResult"]["intent"]["endInteraction"]
@@ -73,7 +72,7 @@ def is_empty_parameter_dict(parameters):
     return True
 
 
-def process_attraction(query_text, parameters, intent, session):
+def process_attraction(parameters, intent, session):
     """
     This method handle all requests about attraction
     """
