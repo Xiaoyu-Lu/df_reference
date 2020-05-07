@@ -58,9 +58,6 @@ def search(parameters, data_type):
         # skip if any parameter does not match
         is_not_a_match = False
         for field in non_empty_parameters:
-            
-
-
             if document[field] != non_empty_parameters[field]:
                 is_not_a_match = True
                 break
