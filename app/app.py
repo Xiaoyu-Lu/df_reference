@@ -117,7 +117,7 @@ def process_attraction(query_text, parameters, intent, session):
 
         # otherwise start search and return results
         results = search(user_parameters, "attraction")
-        print('get %d results'%len(results))
+        # print('get %d results'%len(results))
         if len(results) == 0:
             return {
                 "fulfillmentText": random.choice([
@@ -128,12 +128,12 @@ def process_attraction(query_text, parameters, intent, session):
 
         # update search results here because we need to store them for the next interaction
         # so that we know what was there previously
-        print('update!!!')
+        # print('update!!!')
         update_search_results_for_user(results, "attraction", session)
 
         # too many results
         if len(results) > 2:
-            print('cool')
+            # print('cool')
             return {
                 "fulfillmentText": random.choice([
                     "Sure! But I found {} attractions that match your needs. Can you add more information to help narrow it down?".format(len(results)),
