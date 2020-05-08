@@ -264,7 +264,7 @@ def process_attraction(parameters, intent, session):
 
 
         if len(results) == 1:
-            report = printout_result(user_results[0])
+            report = printout_result(results[0])
             return {
                 "fulfillmentText": random.choice([
                     "I found it! {}".format(" ".join(report)),
