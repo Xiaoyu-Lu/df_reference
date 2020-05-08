@@ -123,6 +123,7 @@ def process_attraction(parameters, intent, session):
                 ])
             }
 
+
     if intent == "Attraction-Recommend - choose":
         user_results = get_user_profile(session)["results"]["attraction"]
 
@@ -303,6 +304,12 @@ def process_attraction(parameters, intent, session):
                 "There are {} attractions that match your needs.".format(len(results))
             ])
         }
+    return {
+                "fulfillmentText": random.choice([
+                    "Sorry, I cannot find you anything. Please try another way.",
+                    "Sorry, I am in outer space right now."
+                ])
+            }
 
 if __name__ == "__main__":
     port = os.environ.get(
