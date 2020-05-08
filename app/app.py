@@ -116,7 +116,7 @@ def process_attraction(parameters, intent, session):
                 + "Thank you!"
             }
 
-        if user_results > 1:
+        if len(user_results) > 1:
             report = []
             # provide them the first two to compare
             report.append(printout_result(user_results[0]))
