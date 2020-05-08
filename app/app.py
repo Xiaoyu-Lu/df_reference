@@ -14,7 +14,6 @@ from db import get_user_profile
 from db import search_from_results
 
 
-
 app = Flask(__name__)
 
 def is_browser(ua_string):
@@ -126,8 +125,6 @@ def process_attraction(parameters, intent, session):
                     "Nice! {}".format(report)
                 ])
             }
-
-
 
 
     continue_search = False
