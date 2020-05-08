@@ -103,34 +103,34 @@ def process_attraction(parameters, intent, session):
     if intent == "Attraction-Recommend - choose":
         user_results = get_user_profile(session)["results"]["attraction"]
 
-            if not user_results:
-                return {
-                    "fulfillmentText": "Sorry, I'm not sure which one you are asking about. Would you "
-                    + "mind adding or changing some information? "
-                    + "Thank you!"
-                }
-            if len(user_results) > 1:
-                for field in parameters:
-                    if parameters = '1':
-                        report = printout_detailed_result(user_results[0])
-                        update_search_results_for_user(user_results, "attraction", session)
-                        return {
-                            "fulfillmentText": random.choice([
-                                "Cool! {}".format(" ".join(report)),
-                                "Nice! {}".format(" ".join(report))
-                            ])
-                        }
+        if not user_results:
+            return {
+                "fulfillmentText": "Sorry, I'm not sure which one you are asking about. Would you "
+                + "mind adding or changing some information? "
+                + "Thank you!"
+            }
+        if len(user_results) > 1:
+            for field in parameters:
+                if parameters = '1':
+                    report = printout_detailed_result(user_results[0])
+                    update_search_results_for_user(user_results, "attraction", session)
+                    return {
+                        "fulfillmentText": random.choice([
+                            "Cool! {}".format(" ".join(report)),
+                            "Nice! {}".format(" ".join(report))
+                        ])
+                    }
 
-                    elif parameters = '2':
+                elif parameters = '2':
 
-                        report = printout_detailed_result(user_results[1])
-                        update_search_results_for_user(user_results, "attraction", session)
-                        return {
-                            "fulfillmentText": random.choice([
-                                "Cool! {}".format(" ".join(report)),
-                                "Nice! {}".format(" ".join(report))
-                            ])
-                        }
+                    report = printout_detailed_result(user_results[1])
+                    update_search_results_for_user(user_results, "attraction", session)
+                    return {
+                        "fulfillmentText": random.choice([
+                            "Cool! {}".format(" ".join(report)),
+                            "Nice! {}".format(" ".join(report))
+                        ])
+                    }
 
 
 
