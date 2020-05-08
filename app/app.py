@@ -232,15 +232,15 @@ def process_attraction(parameters, intent, session):
                 ])
             }
 
-        # if intent == "Attraction-Recommend":
-        #     # we also need to clean any stored results because this is an entirely new request
-        #     # 
-        #     # UNLESS this logic is called with should_start_search, meaning this block of code
-        #     # is used just for the search with the already updated parameters from a different
-        #     # intent block
-        #     update_search_results_for_user([], "attraction", session)
+        if intent == "Attraction-Recommend":
+            # we also need to clean any stored results because this is an entirely new request
+            # 
+            # UNLESS this logic is called with should_start_search, meaning this block of code
+            # is used just for the search with the already updated parameters from a different
+            # intent block
+            update_search_results_for_user([], "attraction", session)
 
-        # prompt the user again if nothing is changed
+        prompt the user again if nothing is changed
         if updated_user_profile is None:
             return {
                 "fulfillmentText": random.choice([
