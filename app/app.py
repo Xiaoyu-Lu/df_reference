@@ -126,7 +126,6 @@ def process_attraction(parameters, intent, session):
                 ])
             }
 
-
     continue_search = False
     if intent == "Attraction-Recommend - refine_search":
         # update parameters
@@ -156,8 +155,9 @@ def process_attraction(parameters, intent, session):
         if len(matched_results) > 1:
             report = []
             # provide them the first two to compare
+            report.append("I found two results for you. THE FIRST ONE: \n")
             report.append(printout_result(matched_results[0]))
-            report.append("\nAnother one is: \n")
+            report.append("\nTHE SECOND ONE: \n")
             report.append(printout_result(matched_results[1]))
             update_search_results_for_user(matched_results, "attraction", session)
             return {
