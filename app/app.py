@@ -114,7 +114,7 @@ def process_attraction(parameters, intent, session):
                 + "Thank you!"
             }
         
-        if len(user_results) == 1:
+        if len(user_results) >= 1:
             report = printout_detailed_result_openhour(user_results[0])
             return {
                 "fulfillmentText": random.choice([
