@@ -109,28 +109,23 @@ def process_attraction(parameters, intent, session):
                 + "mind adding or changing some information? "
                 + "Thank you!"
             }
+        
         if len(user_results) > 1:
-  
+            index = 0
+            
             if parameters['index_to_choose'] == '1':
-                report = printout_detailed_result(user_results[0])
-                update_search_results_for_user(user_results, "attraction", session)
-                return {
-                    "fulfillmentText": random.choice([
-                        "Cool! {}".format(" ".join(report)),
-                        "Nice! {}".format(" ".join(report))
-                    ])
-                }
-
+                index = 0
             elif parameters['index_to_choose'] == '2':
+                index = 1
 
-                report = printout_detailed_result(user_results[1])
-                update_search_results_for_user(user_results, "attraction", session)
-                return {
-                    "fulfillmentText": random.choice([
-                        "Cool! {}".format(" ".join(report)),
-                        "Nice! {}".format(" ".join(report))
-                    ])
-                }
+            report = printout_detailed_result(user_results[index])
+            update_search_results_for_user(user_results, "attraction", session)
+            return {
+                "fulfillmentText": random.choice([
+                    "Cool! {}".format(report),
+                    "Nice! {}".format(report)
+                ])
+            }
 
 
 
