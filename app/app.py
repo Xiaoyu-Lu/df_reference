@@ -82,8 +82,6 @@ def printout_result(result):
     report = []
     report.append("The {} located in the {} of the Cambridge.\n".format(result['name'].capitalize(), result['area']))
     report.append("There will be {} entrance fee.\n".format(result['entrance fee'] if result['entrance fee'] != 'free' else 'no'))
-    if result['openhours'] != '?':
-        report.append("{}.\n".format(result['openhours']))
     return ''.join(report)
 
 def printout_detailed_result_openhour(result):
