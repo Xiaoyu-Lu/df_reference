@@ -80,18 +80,25 @@ def printout_result(result):
 
     # PARA = ["address", "area", "entrance fee", "location", "name", "openhours", "phone", "postcode", "pricerange", "type"]
     report = []
-    report.append("The {} located in the {} of the Cambridge.\n".format(result['name'], result['area']))
+    report.append("The {} located in the {} of the Cambridge.\n".format(result['name'].capitalize(), result['area']))
     report.append("There will be {} entrance fee.\n".format(result['entrance fee'] if result['entrance fee'] != 'free' else 'no'))
     if result['openhours'] != '?':
         report.append("{}.\n".format(result['openhours']))
     return ''.join(report)
 
+def printout_detailed_result_openhour(result):
+    report = []
+    if result['openhours'] != '?':
+        report.append("{}.\n".format(result['openhours'].capitalize()))
+    else:
+        report.append("Sorry, the openhours of the {} is not available.".format(result['name'].capitalize()))
+    return ''.join(report)
 
 def printout_detailed_result(result):
 
     # PARA = ["address", "area", "entrance fee", "location", "name", "openhours", "phone", "postcode", "pricerange", "type"]
     report = []
-    report.append("The number of {} is {}.\n".format(result['name'], result['phone']))
+    report.append("The number of {} is {}.\n".format(result['name'].capitalize(), result['phone']))
     report.append("The address is {}.".format(result['address']))
     return ''.join(report)
 
@@ -99,6 +106,33 @@ def process_attraction(parameters, intent, session):
     """
     This method handle all requests about attraction
     """
+    if intent == "Attraction-Recommend - hour":
+        user_results = get_user_profile(session)["results"]["attraction"]
+
+        if not user_results:
+            return {
+                "fulfillmentText": "Sorry, I'm not sure which one you are asking about. Would you "
+                + "mind adding or changing some information? "
+                + "Thank you!"
+            }
+        
+        if len(user_results) == 1:
+
+
+            if parameters['openhours'] == '1':
+                index = 0
+            elif parameters['index_to_choose'] == '2':
+                index = 1
+
+            report = printout_detailed_result(user_results[index])
+            update_search_results_for_user(user_results, "attraction", session)
+            return {
+                "fulfillmentText": random.choice([
+                    "Cool! {}".format(report),
+                    "Nice! {}".format(report)
+                ])
+            }
+
     if intent == "Attraction-Recommend - choose":
         user_results = get_user_profile(session)["results"]["attraction"]
 
