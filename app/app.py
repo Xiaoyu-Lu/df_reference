@@ -11,6 +11,9 @@ from db import update_search_results_for_user
 from db import remove_user_data
 from db import search
 
+
+
+
 app = Flask(__name__)
 
 def is_browser(ua_string):
@@ -29,10 +32,6 @@ def process_dialogflow_request():
     session = request.json["session"]
 
 
-    # process based on the domain
-    if "Attraction-Recommend" in intent:
-        return process_attraction(parameters, intent, session)
-
     if len(request.json["queryResult"]["intent"]) > 2:
         is_end = request.json["queryResult"]["intent"]["endInteraction"]
 
@@ -47,7 +46,11 @@ def process_dialogflow_request():
                 "Thank you! We're looking forward to assisting you again."
             ])
         }
-    
+    # process based on the domain
+    if "Attraction-Recommend" in intent:
+        return process_attraction(parameters, intent, session)
+
+
     # the code reaches here when webhook is enabled on an intent
     # but this intent is not yet included in our backend
     return json.dumps(
@@ -73,6 +76,16 @@ def is_empty_parameter_dict(parameters):
     return True
 
 
+def printout_result(result):
+
+    PARA = ["address", "area", "entrance fee", "location", "name", "openhours", "phone", "postcode", "pricerange", "type"]
+    report = []
+    report.append("The {} located in the {} of the Cambridge.\n".format(result['name'], result['area']))
+    report.append("There will be {} entrance fee.\n".format(result['entrance fee'] if result['entrance fee'] != 'free' else 'no'))
+    if result['openhours'] != '?':
+        report.append(result['openhours'])
+    return ''.join(report)
+
 def process_attraction(parameters, intent, session):
     """
     This method handle all requests about attraction
@@ -93,6 +106,26 @@ def process_attraction(parameters, intent, session):
                     "I'm sorry that I couldn't get anything new from what you just said. Could you try again?"
                 ])
             }
+        user_results = get_user_profile(session)["results"]["attraction"]
+
+        if user_results is None:
+            return {
+                "fulfillmentText": "Sorry, I'm not sure which one you are asking about. Would you "
+                + "mind adding or changing some information to help me find a place for you first? "
+                + "Thank you!"
+            }
+
+        if user_results > 1:
+            report = []
+            # provide them the first two to compare
+            report.append(printout_result(user_results[0]))
+            report.append("\nAnother one is: \n")
+            report.append(printout_result(user_results[1]))
+               
+            return {
+                "fulfillmentText":"{}".format(" ".join(report))
+            }
+
 
         # only continue search with the updated parameters if there is anything new
         # given by the user
@@ -118,13 +151,13 @@ def process_attraction(parameters, intent, session):
                 ])
             }
 
-        if intent == "Attraction-Recommend":
-            # we also need to clean any stored results because this is an entirely new request
-            # 
-            # UNLESS this logic is called with should_start_search, meaning this block of code
-            # is used just for the search with the already updated parameters from a different
-            # intent block
-            update_search_results_for_user([], "attraction", session)
+        # if intent == "Attraction-Recommend":
+        #     # we also need to clean any stored results because this is an entirely new request
+        #     # 
+        #     # UNLESS this logic is called with should_start_search, meaning this block of code
+        #     # is used just for the search with the already updated parameters from a different
+        #     # intent block
+        #     update_search_results_for_user([], "attraction", session)
 
         # prompt the user again if nothing is changed
         if updated_user_profile is None:
@@ -135,7 +168,7 @@ def process_attraction(parameters, intent, session):
                 ])
             }
 
-        # get new user data
+        # get user data
         user_parameters = updated_user_profile["parameters"]
         # print('user_parameters',user_parameters)
         # if no parameter present, ask the user to give some
@@ -173,11 +206,13 @@ def process_attraction(parameters, intent, session):
                 ])
             }
 
+
         if len(results) == 1:
+            report = printout_result(user_results[0])
             return {
                 "fulfillmentText": random.choice([
-                    "I found it! Do you want more information about it now?",
-                    "Good news! I found the attraction. Do you want the address and phone number now?"
+                    "I found it! {}".format(" ".join(report)),
+                    "Good news! {}".format(" ".join(report))
                 ])
             }
 
