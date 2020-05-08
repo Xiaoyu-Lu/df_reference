@@ -240,7 +240,7 @@ def process_attraction(parameters, intent, session):
             # intent block
             update_search_results_for_user([], "attraction", session)
 
-        prompt the user again if nothing is changed
+        # prompt the user again if nothing is changed
         if updated_user_profile is None:
             return {
                 "fulfillmentText": random.choice([
