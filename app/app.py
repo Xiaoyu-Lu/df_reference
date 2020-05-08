@@ -81,8 +81,8 @@ def printout_result(result):
     # PARA = ["address", "area", "entrance fee", "location", "name", "openhours", "phone", "postcode", "pricerange", "type"]
     report = []
     report.append(random.choice([
-                    "I like this one. The {} is located in the {} of the Cambridge.\n".format(result['name'].capitalize(), result['area']),
-                    "Hey, this one is famous. The {} is in the {} of the Cambridge.\n".format(result['name'].capitalize(), result['area'])
+                    "I like this one. The {} is located in the {} of the Cambridge.\n".format(result['name'].title(), result['area']),
+                    "Hey, this one is famous. The {} is in the {} of the Cambridge.\n".format(result['name'].title(), result['area'])
                 ]))
 
     report.append(random.choice([
@@ -97,14 +97,14 @@ def printout_detailed_result_openhour(result):
     if result['openhours'] != '?':
         report.append("{}.\n".format(result['openhours'].capitalize()))
     else:
-        report.append("Sorry, the openhours of the {} is not available.".format(result['name'].capitalize()))
+        report.append("Sorry, the openhours of the {} is not available.".format(result['name'].title()))
     return ''.join(report)
 
 def printout_detailed_result(result):
 
     # PARA = ["address", "area", "entrance fee", "location", "name", "openhours", "phone", "postcode", "pricerange", "type"]
     report = []
-    report.append("The number of {} is {}.\n".format(result['name'].capitalize(), result['phone']))
+    report.append("The number of {} is {}.\n".format(result['name'].title(), result['phone']))
     report.append("The address is {}.".format(result['address']))
     return ''.join(report)
 
