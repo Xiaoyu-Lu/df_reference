@@ -80,8 +80,16 @@ def printout_result(result):
 
     # PARA = ["address", "area", "entrance fee", "location", "name", "openhours", "phone", "postcode", "pricerange", "type"]
     report = []
-    report.append("The {} located in the {} of the Cambridge.\n".format(result['name'].capitalize(), result['area']))
-    report.append("There will be {} entrance fee.\n".format(result['entrance fee'] if result['entrance fee'] != 'free' else 'no'))
+    report.append(random.choice([
+                    "Hey, the {} is located in the {} of the Cambridge.\n".format(result['name'].capitalize(), result['area']),
+                    "This one fits your need! The {} is in the {} of the Cambridge.\n".format(result['name'].capitalize(), result['area'])
+                ]))
+
+    report.append(random.choice([
+                "There will be {} entrance fee.\n".format(result['entrance fee'] if result['entrance fee'] != 'free' else 'no'),
+                "It might cost you {}.\n".format(result['entrance fee'] if result['entrance fee'] != 'free' else 'nothing :)')
+            ]))
+
     return ''.join(report)
 
 def printout_detailed_result_openhour(result):
@@ -118,8 +126,8 @@ def process_attraction(parameters, intent, session):
             report = printout_detailed_result_openhour(user_results[0])
             return {
                 "fulfillmentText": random.choice([
-                    "Got it! {}".format(report),
-                    "Found it! {}".format(report)
+                    "Yeah.. {}".format(report),
+                    "...Found it! {}".format(report)
                 ])
             }
 
@@ -146,8 +154,8 @@ def process_attraction(parameters, intent, session):
             update_search_results_for_user(user_results, "attraction", session)
             return {
                 "fulfillmentText": random.choice([
-                    "Cool! {}".format(report),
-                    "Nice! {}".format(report)
+                    "Cool :) {}".format(report),
+                    "Nice Choice! {}".format(report)
                 ])
             }
 
@@ -282,8 +290,8 @@ def process_attraction(parameters, intent, session):
             # print('cool')
             return {
                 "fulfillmentText": random.choice([
-                    "Sure! But I found {} attractions that match your needs. Can you add more information to help narrow it down?".format(len(results)),
-                    "No problem! But I found {} attractions that match your needs. Could you help narrow it down with more information?".format(len(results)),
+                    "Wow! I found {} attractions that match your needs. Can you add more information to help narrow it down?".format(len(results)),
+                    "No problem! There are {} attractions that match your needs. Could you help narrow it down with more information?".format(len(results)),
                 ])
             }
 
