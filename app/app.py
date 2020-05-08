@@ -111,7 +111,7 @@ def process_attraction(parameters, intent, session):
             }
         if len(user_results) > 1:
             for field in parameters:
-                if parameters = '1':
+                if parameters == '1':
                     report = printout_detailed_result(user_results[0])
                     update_search_results_for_user(user_results, "attraction", session)
                     return {
@@ -121,7 +121,7 @@ def process_attraction(parameters, intent, session):
                         ])
                     }
 
-                elif parameters = '2':
+                elif parameters == '2':
 
                     report = printout_detailed_result(user_results[1])
                     update_search_results_for_user(user_results, "attraction", session)
