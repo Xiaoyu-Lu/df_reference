@@ -79,7 +79,7 @@ def is_empty_parameter_dict(parameters):
 
 def printout_result(result):
 
-    PARA = ["address", "area", "entrance fee", "location", "name", "openhours", "phone", "postcode", "pricerange", "type"]
+    # PARA = ["address", "area", "entrance fee", "location", "name", "openhours", "phone", "postcode", "pricerange", "type"]
     report = []
     report.append("The {} located in the {} of the Cambridge.\n".format(result['name'], result['area']))
     report.append("There will be {} entrance fee.\n".format(result['entrance fee'] if result['entrance fee'] != 'free' else 'no'))
@@ -87,10 +87,53 @@ def printout_result(result):
         report.append(result['openhours'])
     return ''.join(report)
 
+
+def printout_detailed_result(result):
+
+    # PARA = ["address", "area", "entrance fee", "location", "name", "openhours", "phone", "postcode", "pricerange", "type"]
+    report = []
+    report.append("The number of {} is {}.\n".format(result['name'], result['phone']))
+    report.append("There address is {}.".format(result['address']))
+    return ''.join(report)
+
 def process_attraction(parameters, intent, session):
     """
     This method handle all requests about attraction
     """
+    if intent == "Attraction-Recommend - choose":
+        user_results = get_user_profile(session)["results"]["attraction"]
+
+            if not user_results:
+                return {
+                    "fulfillmentText": "Sorry, I'm not sure which one you are asking about. Would you "
+                    + "mind adding or changing some information? "
+                    + "Thank you!"
+                }
+            if len(user_results) > 1:
+                for field in parameters:
+                    if parameters = '1':
+                        report = printout_detailed_result(user_results[0])
+                        update_search_results_for_user(user_results, "attraction", session)
+                        return {
+                            "fulfillmentText": random.choice([
+                                "Cool! {}".format(" ".join(report)),
+                                "Nice! {}".format(" ".join(report))
+                            ])
+                        }
+
+                    elif parameters = '2':
+
+                        report = printout_detailed_result(user_results[1])
+                        update_search_results_for_user(user_results, "attraction", session)
+                        return {
+                            "fulfillmentText": random.choice([
+                                "Cool! {}".format(" ".join(report)),
+                                "Nice! {}".format(" ".join(report))
+                            ])
+                        }
+
+
+
 
     continue_search = False
     if intent == "Attraction-Recommend - refine_search":
@@ -112,7 +155,7 @@ def process_attraction(parameters, intent, session):
         if user_results is None:
             return {
                 "fulfillmentText": "Sorry, I'm not sure which one you are asking about. Would you "
-                + "mind adding or changing some information to help me find a place for you first? "
+                + "mind adding or changing some information? "
                 + "Thank you!"
             }
 
@@ -124,13 +167,14 @@ def process_attraction(parameters, intent, session):
             report.append(printout_result(matched_results[0]))
             report.append("\nAnother one is: \n")
             report.append(printout_result(matched_results[1]))
-               
+            update_search_results_for_user(matched_results, "attraction", session)
             return {
-                "fulfillmentText":"{}".format(" ".join(report))
+                "fulfillmentText":"{}\nWhich one do you prefer?".format(" ".join(report))
             }
 
         if len(matched_results) == 1:
             report = printout_result(matched_results[0])
+            update_search_results_for_user(matched_results, "attraction", session)
             return {
                 "fulfillmentText": random.choice([
                     "I found it! {}".format(" ".join(report)),
@@ -146,9 +190,6 @@ def process_attraction(parameters, intent, session):
                     + "some information so that I can get the one place for you? Thanks!"
                 )
             }
-
-
-
 
         # only continue search with the updated parameters if there is anything new
         # given by the user
