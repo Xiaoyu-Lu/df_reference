@@ -35,17 +35,17 @@ def process_dialogflow_request():
     if len(request.json["queryResult"]["intent"]) > 2:
         is_end = request.json["queryResult"]["intent"]["endInteraction"]
 
-    # remove user data if the session is ended
-    if intent == is_end:
-        remove_user_data(session)
+        # remove user data if the session is ended
+        if is_end == True:
+            remove_user_data(session)
 
-        return {
-            "fulfillmentText": random.choice([
-                "Thank you for using our service!",
-                "You're welcome, have a nice day!",
-                "Thank you! We're looking forward to assisting you again."
-            ])
-        }
+            return {
+                "fulfillmentText": random.choice([
+                    "Thank you for using our service!",
+                    "You're welcome, have a nice day!",
+                    "Thank you! We're looking forward to assisting you again."
+                ])
+            }
     # process based on the domain
     if "Attraction-Recommend" in intent:
         return process_attraction(parameters, intent, session)
