@@ -129,7 +129,7 @@ def process_attraction(parameters, intent, session):
                 "fulfillmentText": random.choice([
                     "Yeah.. {}".format(report),
                     "...Here it is: {}".format(report),
-                    "I am really goot at searching, here it is: {}".format(report)
+                    "Good question. {}".format(report)
                 ])
             }
 
