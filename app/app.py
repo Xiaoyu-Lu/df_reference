@@ -115,19 +115,11 @@ def process_attraction(parameters, intent, session):
             }
         
         if len(user_results) == 1:
-
-
-            if parameters['openhours'] == '1':
-                index = 0
-            elif parameters['index_to_choose'] == '2':
-                index = 1
-
-            report = printout_detailed_result(user_results[index])
-            update_search_results_for_user(user_results, "attraction", session)
+            report = printout_detailed_result_openhour(user_results[0])
             return {
                 "fulfillmentText": random.choice([
-                    "Cool! {}".format(report),
-                    "Nice! {}".format(report)
+                    "Got it! {}".format(report),
+                    "Found it! {}".format(report)
                 ])
             }
 
