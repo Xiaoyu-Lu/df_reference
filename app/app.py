@@ -81,13 +81,13 @@ def printout_result(result):
     # PARA = ["address", "area", "entrance fee", "location", "name", "openhours", "phone", "postcode", "pricerange", "type"]
     report = []
     report.append(random.choice([
-                    "Hey, the {} is located in the {} of the Cambridge.\n".format(result['name'].capitalize(), result['area']),
-                    "This one fits your need! The {} is in the {} of the Cambridge.\n".format(result['name'].capitalize(), result['area'])
+                    "I like this one. The {} is located in the {} of the Cambridge.\n".format(result['name'].capitalize(), result['area']),
+                    "Hey, this one is famous. The {} is in the {} of the Cambridge.\n".format(result['name'].capitalize(), result['area'])
                 ]))
 
     report.append(random.choice([
                 "There will be {} entrance fee.\n".format(result['entrance fee'] if result['entrance fee'] != 'free' else 'no'),
-                "It might cost you {}.\n".format(result['entrance fee'] if result['entrance fee'] != 'free' else 'nothing :)')
+                "It will cost you {}.\n".format(result['entrance fee'] if result['entrance fee'] != 'free' else 'nothing :)')
             ]))
 
     return ''.join(report)
@@ -127,7 +127,8 @@ def process_attraction(parameters, intent, session):
             return {
                 "fulfillmentText": random.choice([
                     "Yeah.. {}".format(report),
-                    "...Found it! {}".format(report)
+                    "...Found it! {}".format(report),
+                    "I am really goot at searching, here it is! {}".format(report)
                 ])
             }
 
@@ -151,7 +152,7 @@ def process_attraction(parameters, intent, session):
                 index = 1
 
             report = printout_detailed_result(user_results[index])
-            update_search_results_for_user(user_results, "attraction", session)
+            update_search_results_for_user([user_results[index]], "attraction", session)
             return {
                 "fulfillmentText": random.choice([
                     "Cool :) {}".format(report),
