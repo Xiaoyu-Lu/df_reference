@@ -104,7 +104,7 @@ def process_attraction(parameters, intent, session):
     """
     This method handle all requests about attraction
     """
-    if intent == "Attraction-Recommend - hour":
+    if intent == "Attraction-Recommend - hours":
         user_results = get_user_profile(session)["results"]["attraction"]
 
         if not user_results:
