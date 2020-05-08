@@ -10,7 +10,8 @@ from db import update_user_parameters
 from db import update_search_results_for_user
 from db import remove_user_data
 from db import search
-
+from db import get_user_profile
+from db import search_from_results
 
 
 
