@@ -267,8 +267,8 @@ def process_attraction(parameters, intent, session):
             report = printout_result(results[0])
             return {
                 "fulfillmentText": random.choice([
-                    "I found it! {}".format(" ".join(report)),
-                    "Good news! {}".format(" ".join(report))
+                    "I found it! {}".format(report),
+                    "Good news! {}".format(report)
                 ])
             }
 
