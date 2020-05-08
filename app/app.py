@@ -93,7 +93,7 @@ def printout_detailed_result(result):
     # PARA = ["address", "area", "entrance fee", "location", "name", "openhours", "phone", "postcode", "pricerange", "type"]
     report = []
     report.append("The number of {} is {}.\n".format(result['name'], result['phone']))
-    report.append("There address is {}.".format(result['address']))
+    report.append("The address is {}.".format(result['address']))
     return ''.join(report)
 
 def process_attraction(parameters, intent, session):
@@ -112,7 +112,7 @@ def process_attraction(parameters, intent, session):
         
         if len(user_results) > 1:
             index = 0
-            
+
             if parameters['index_to_choose'] == '1':
                 index = 0
             elif parameters['index_to_choose'] == '2':
