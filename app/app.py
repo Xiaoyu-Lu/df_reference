@@ -82,7 +82,8 @@ def printout_result(result):
     report = []
     report.append(random.choice([
                     "I like this one. The {} is located in the {} of the Cambridge.\n".format(result['name'].title(), result['area']),
-                    "Hey, this one is famous. The {} is in the {} of the Cambridge.\n".format(result['name'].title(), result['area'])
+                    "Hey, this one is famous. The {} is in the {} of the Cambridge.\n".format(result['name'].title(), result['area']),
+                    "I recommend this one. The {} is in the {} of the Cambridge.\n".format(result['name'].title(), result['area'])
                 ]))
 
     report.append(random.choice([
@@ -127,8 +128,8 @@ def process_attraction(parameters, intent, session):
             return {
                 "fulfillmentText": random.choice([
                     "Yeah.. {}".format(report),
-                    "...Found it! {}".format(report),
-                    "I am really goot at searching, here it is! {}".format(report)
+                    "...Here it is: {}".format(report),
+                    "I am really goot at searching, here it is: {}".format(report)
                 ])
             }
 
@@ -203,8 +204,8 @@ def process_attraction(parameters, intent, session):
             update_search_results_for_user(matched_results, "attraction", session)
             return {
                 "fulfillmentText": random.choice([
-                    "I found it! {}".format(" ".join(report)),
-                    "Good news! {}".format(" ".join(report))
+                    "{}".format(" ".join(report)),
+                    "{}".format(" ".join(report))
                 ])
             }
 
