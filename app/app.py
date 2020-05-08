@@ -116,16 +116,38 @@ def process_attraction(parameters, intent, session):
                 + "Thank you!"
             }
 
-        if len(user_results) > 1:
+        matched_results = search_from_results(parameters, "attraction", session)
+
+        if len(matched_results) > 1:
             report = []
             # provide them the first two to compare
-            report.append(printout_result(user_results[0]))
+            report.append(printout_result(matched_results[0]))
             report.append("\nAnother one is: \n")
-            report.append(printout_result(user_results[1]))
+            report.append(printout_result(matched_results[1]))
                
             return {
                 "fulfillmentText":"{}".format(" ".join(report))
             }
+
+        if len(matched_results) == 1:
+            report = printout_result(matched_results[0])
+            return {
+                "fulfillmentText": random.choice([
+                    "I found it! {}".format(" ".join(report)),
+                    "Good news! {}".format(" ".join(report))
+                ])
+            }
+
+        # prompt the user again if there are no matches
+        if len(matched_results) == 0:
+            return {
+                "fulfillmentText":(
+                    "Sorry, I can't find the one you're referring to. Would you mind changing "
+                    + "some information so that I can get the one place for you? Thanks!"
+                )
+            }
+
+
 
 
         # only continue search with the updated parameters if there is anything new
