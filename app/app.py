@@ -391,7 +391,7 @@ def process_attraction(parameters, intent, session):
             # print('cool')
             return {
                 "fulfillmentText": random.choice([
-                    "Wow! I see there are {} {} that match your needs. Can you add more information to help narrow it down?".format(len(results), results['type']),
+                    "Wow! I see there are {} {}s that match your needs. Can you add more information to help narrow it down?".format(len(results), user_parameters['type']),
                     "No problem! There are {} attractions that match your needs. Could you help narrow it down with more information?".format(len(results)),
                 ])
             }

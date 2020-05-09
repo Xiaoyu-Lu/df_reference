@@ -119,7 +119,7 @@ def search(parameters, data_type):
     for field in parameters:
         if len(parameters[field].strip()) > 0:
             non_empty_parameters[field] = parameters[field]
-    # print('para',non_empty_parameters)
+
     for document in DATATYPE_TO_DB[data_type]:
         # skip if any parameter does not match
         is_not_a_match = False
