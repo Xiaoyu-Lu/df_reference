@@ -144,6 +144,10 @@ def printout_detailed_result_openhour(result):
         report.append("Sorry, the openhours of the {} is not available.".format(result['name'].title()))
     return ''.join(report)
 
+def printout_detailed_result_postcode(result):
+    report = "{}.\n".format(result['postcode'])
+    return report
+
 def printout_detailed_result(result):
 
     # PARA = ["address", "area", "entrance fee", "location", "name", "openhours", "phone", "postcode", "pricerange", "type"]
@@ -290,6 +294,26 @@ def process_attraction(parameters, intent, session):
         # only continue search with the updated parameters if there is anything new
         # given by the user
         continue_search = True
+
+    if intent == "Attraction-Recommend - postcode":
+        user_results = get_user_profile(session)["results"]["attraction"]
+
+        if not user_results:
+            return {
+                "fulfillmentText": "Sorry, I'm not sure which one you are asking about. Would you "
+                + "mind adding or changing some information? "
+                + "Thank you!"
+            }
+        
+        if len(user_results) >= 1:
+            report = printout_detailed_result_postcode(user_results[0])
+            return {
+                "fulfillmentText": random.choice([
+                    "Yeah.. {}".format(report),
+                    "...Here it is: {}".format(report),
+                    "Good question. {}".format(report)
+                ])
+            }
 
 
     if intent == "Attraction-Recommend" or continue_search:
