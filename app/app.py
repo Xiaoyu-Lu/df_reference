@@ -87,34 +87,52 @@ def printout_result(result):
                     "I recommend this one. The {} is in the {} of the Cambridge.\n".format(result['name'].title(), result['area'])
                 ]))
 
-    entrance_fee = result['entrance fee']
-    if entrance_fee == '?':
-        report.append(random.choice([
-                    "You will need to call for their entry fee.",
-                    "You have to call for their entry fee."
-                ]))
+    # entrance_fee = result['entrance fee']
+    # if entrance_fee == '?':
+    #     report.append(random.choice([
+    #                 "You will need to call for their entry fee.",
+    #                 "You have to call for their entry fee."
+    #             ]))
 
-    elif entrance_fee == 'free':
-        report.append(random.choice([
-                    "There is no entrance fee",
-                    "It doesn't have entrance fee."
-                ]))
-    else:
-        report.append(random.choice([
-                    "It has a {} entrance fee.\n".format(entrance_fee),
-                    "There will be a {} entrance fee.\n".format(entrance_fee),
-                    "It will cost you {}.\n".format(entrance_fee)
-                ]))
-
+    # elif entrance_fee == 'free':
+    #     report.append(random.choice([
+    #                 "There is no entrance fee",
+    #                 "It doesn't have entrance fee."
+    #             ]))
+    # else:
+    #     report.append(random.choice([
+    #                 "It has a {} entrance fee.\n".format(entrance_fee),
+    #                 "There will be a {} entrance fee.\n".format(entrance_fee),
+    #                 "It will cost you {}.\n".format(entrance_fee)
+    #             ]))
 
     return ''.join(report)
 
 def printout_detailed_result_from_name(result):
     report = []
+    entrance_fee = result['entrance fee']
+    entrance_fee_result = ''
+    if entrance_fee == '?':
+        entrance_fee_result = random.choice([
+                    "you will need to call for their entry fee.",
+                    "you have to call for their entry fee."
+                ])
 
-    report.append("It's located at {}.  It's a {} in the city's {} and it has a {} entrance fee. ".format(result['address'].capitalize(),\
+    elif entrance_fee == 'free':
+        entrance_fee_result = random.choice([
+                    "there is no entrance fee",
+                    "it doesn't have entrance fee."
+                ])
+    else:
+        entrance_fee_result = random.choice([
+                    "it has a {} entrance fee.\n".format(entrance_fee),
+                    "there will be a {} entrance fee.\n".format(entrance_fee),
+                    "it will cost you {}.\n".format(entrance_fee)
+                ])
+
+    report.append("It's located at {}.  It's a {} in the city's {} and {}. ".format(result['address'].capitalize(),\
                                                                                                         result['type'], result['area'],\
-                                                                                                        result['entrance fee']))
+                                                                                                        entrance_fee_result))
     return ''.join(report)
 
 
@@ -177,7 +195,6 @@ def process_attraction(parameters, intent, session):
             }
 
 
-
     if intent == "Attraction-Recommend - choose":
         user_results = get_user_profile(session)["results"]["attraction"]
 
@@ -234,9 +251,9 @@ def process_attraction(parameters, intent, session):
         if len(matched_results) > 1:
             report = []
             # provide them the first two to compare
-            report.append("I found two results for you. THE FIRST ONE: \n")
+            report.append("I found two results for you. \n1) ")
             report.append(printout_result(matched_results[0]))
-            report.append("\nTHE SECOND ONE: \n")
+            report.append("\n2) ")
             report.append(printout_result(matched_results[1]))
             update_search_results_for_user(matched_results, "attraction", session)
             return {
