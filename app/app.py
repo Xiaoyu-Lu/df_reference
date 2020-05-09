@@ -131,9 +131,15 @@ def printout_detailed_result_from_name(result):
                     "it will cost you {}.\n".format(entrance_fee)
                 ])
 
-    report.append("It's located at {}.  It's a {} in the city's {} and {}. ".format(result['address'].capitalize(),\
-                                                                                                        result['type'], result['area'],\
-                                                                                                        entrance_fee_result))
+    article = 'a'
+    result_type = result['type']
+    if result_type[0] in 'ae':
+        article = 'an'
+
+    report.append("It's located at {}.  It's {} {} in the city's {} and {}. ".format(result['address'].capitalize(),\
+                                                                                    article, result_type,\
+                                                                                    result['area'],\
+                                                                                    entrance_fee_result))
     return ''.join(report)
 
 
