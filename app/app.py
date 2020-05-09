@@ -87,7 +87,7 @@ def printout_result(result):
                 ]))
 
     report.append(random.choice([
-                "There will be {} entrance fee.\n".format(result['entrance fee'] if result['entrance fee'] != 'free' else 'no'),
+                "There will be {} entrance fee.\n".format(result['entrance fee'] if result['entrance fee'] != 'free' or '?' else 'no'),
                 "It will cost you {}.\n".format(result['entrance fee'] if result['entrance fee'] != 'free' else 'nothing :)')
             ]))
 
