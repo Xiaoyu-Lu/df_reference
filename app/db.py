@@ -52,16 +52,18 @@ def search_name_from_results(parameters, data_type, session):
     # there exists a user profile to update
     user_results = get_user_profile(session)["results"][data_type]
 
+    if not user_results:
+        return None
+
     index = -1
-    for document in DATATYPE_TO_DB[data_type]:
+    # for document in DATATYPE_TO_DB[data_type]:
+    for document in user_results:
         index += 1
         if document['name'] == parameters['name']:
             results.append(document)
             break
-        
 
     user_profile = get_user_profile(session)
-
     # update profile
     current_result = user_results.pop(index)
     user_results.insert(0, current_result)
