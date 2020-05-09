@@ -139,7 +139,7 @@ def process_attraction(parameters, intent, session):
     This method handle all requests about attraction
     """
     if intent == "Attraction-Recommend - choose-name":
-        results = search_name_from_results(parameters, "attraction")
+        results = search_name_from_results(parameters, "attraction", session)
 
         if not results:
             return {
