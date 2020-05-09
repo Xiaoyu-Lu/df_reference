@@ -322,12 +322,6 @@ def process_attraction(parameters, intent, session):
 
     if intent == "Attraction-Recommend" or continue_search:
         if intent == "Attraction-Recommend":
-
-            # user_results = get_user_profile(session)["results"]["attraction"]
-            # if user_results:
-            #     if parameters['type'] != user_results['parameters']['type']:
-            #         remove_user_data(session)
-
             # update parameters
             # since this is the beginning of the conversation
             # we should not ignore empty parameters because that is the user's initial request
@@ -397,7 +391,7 @@ def process_attraction(parameters, intent, session):
             # print('cool')
             return {
                 "fulfillmentText": random.choice([
-                    "Wow! I found {} attractions that match your needs. Can you add more information to help narrow it down?".format(len(results)),
+                    "Wow! I see there are {} {} that match your needs. Can you add more information to help narrow it down?".format(len(results), results['type']),
                     "No problem! There are {} attractions that match your needs. Could you help narrow it down with more information?".format(len(results)),
                 ])
             }
