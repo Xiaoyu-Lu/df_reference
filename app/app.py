@@ -86,12 +86,37 @@ def printout_result(result):
                     "I recommend this one. The {} is in the {} of the Cambridge.\n".format(result['name'].title(), result['area'])
                 ]))
 
-    report.append(random.choice([
-                "There will be {} entrance fee.\n".format(result['entrance fee'] if result['entrance fee'] != 'free' or '?' else 'no'),
-                "It will cost you {}.\n".format(result['entrance fee'] if result['entrance fee'] != 'free' else 'nothing :)')
-            ]))
+    entrance_fee = result['entrance fee']
+    if entrance_fee == '?':
+        report.append(random.choice([
+                    "You will need to call for their entry fee.",
+                    "You have to call for their entry fee."
+                ]))
+
+    elif entrance_fee == 'free':
+        report.append(random.choice([
+                    "There is no entrance fee",
+                    "It doesn't have entrance fee."
+                ]))
+    else:
+        report.append(random.choice([
+                    "It has a {} entrance fee.\n".format(entrace_fee),
+                    "There will be a {} entrance fee.\n".format(entrace_fee),
+                    "It will cost you {}.\n".format(entrace_fee)
+                ]))
+
 
     return ''.join(report)
+
+def printout_detailed_result_from_name(result):
+    report = []
+
+    report.append("It's located at {}.  It's a {} in the city's {} and it has a {} entrance fee. ".format(result['address'].capitalize(),\
+                                                                                                              result['type'], result['area'],\
+                                                                                                              result['entrance fee']))
+    return ''.join(report)
+
+
 
 def printout_detailed_result_openhour(result):
     report = []
@@ -113,6 +138,7 @@ def process_attraction(parameters, intent, session):
     """
     This method handle all requests about attraction
     """
+
     if intent == "Attraction-Recommend - hours":
         user_results = get_user_profile(session)["results"]["attraction"]
 
@@ -132,6 +158,7 @@ def process_attraction(parameters, intent, session):
                     "Good question. {}".format(report)
                 ])
             }
+
 
 
     if intent == "Attraction-Recommend - choose":
@@ -222,7 +249,7 @@ def process_attraction(parameters, intent, session):
         # given by the user
         continue_search = True
 
-    if intent == "Attraction-Recommend" or continue_search:
+    if intent in "Attraction-Recommend" or continue_search:
         if intent == "Attraction-Recommend":
             # update parameters
             # since this is the beginning of the conversation
@@ -297,6 +324,13 @@ def process_attraction(parameters, intent, session):
                 ])
             }
 
+        if len(results) == 1 and intent == "Attraction-Recommend - choose-name":
+            report = printout_detailed_result_from_name(results[0])
+                return {
+                    "fulfillmentText": random.choice([
+                        "{}".format(report)
+                    ])
+                }
 
         if len(results) == 1:
             report = printout_result(results[0])
