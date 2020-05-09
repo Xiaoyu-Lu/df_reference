@@ -137,9 +137,8 @@ def process_attraction(parameters, intent, session):
     """
     This method handle all requests about attraction
     """
-
     if intent == "Attraction-Recommend - choose-name":
-        update_search_results_for_user([], "attraction", session)
+        remove_user_data(session)
         results = search_name(parameters, "attraction")
 
         if not results:
@@ -149,13 +148,13 @@ def process_attraction(parameters, intent, session):
                     "Sorry, but I wasn't able to find a matching attraction for you. Can you change some of your requests?"
                 ])
             }
-        else:   
-            report = printout_detailed_result_from_name(results[0])
-            return {
-                    "fulfillmentText": random.choice([
-                        "{}".format(report)
-                    ])
-                    }
+        
+        report = printout_detailed_result_from_name(results[0])
+        return {
+                "fulfillmentText": random.choice([
+                    "{}".format(report)
+                ])
+                }
 
     if intent == "Attraction-Recommend - hours":
         user_results = get_user_profile(session)["results"]["attraction"]

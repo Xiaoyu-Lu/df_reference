@@ -47,25 +47,11 @@ def search_name(parameters, data_type):
     global DATATYPE_TO_DB
 
     results = []
-
-    # delete empty parameters
-    non_empty_parameters = dict()
-    for field in parameters:
-        if len(parameters[field].strip()) > 0:
-            non_empty_parameters[field] = parameters[field]
-    # print('para',non_empty_parameters)
+    
     for document in DATATYPE_TO_DB[data_type]:
         # skip if any parameter does not match
-        is_not_a_match = False
-        for field in non_empty_parameters:
-            if document[field] != non_empty_parameters[field]:
-                is_not_a_match = True
-                break
-
-        if is_not_a_match:
-            continue
-        
-        results.append(document)
+        if document['name'] == parameters['name']:
+            results.append(document)
 
     return results
 
