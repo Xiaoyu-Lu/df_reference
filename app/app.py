@@ -112,8 +112,8 @@ def printout_detailed_result_from_name(result):
     report = []
 
     report.append("It's located at {}.  It's a {} in the city's {} and it has a {} entrance fee. ".format(result['address'].capitalize(),\
-                                                                                                              result['type'], result['area'],\
-                                                                                                              result['entrance fee']))
+                                                                                                        result['type'], result['area'],\
+                                                                                                        result['entrance fee']))
     return ''.join(report)
 
 
@@ -151,7 +151,8 @@ def process_attraction(parameters, intent, session):
         report = printout_detailed_result_from_name(results[0])
         return {
                 "fulfillmentText": random.choice([
-                    "{}".format(report)
+                    "I am debugging"
+                    # "{}".format(report)
                 ])
                 }
 
