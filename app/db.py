@@ -47,7 +47,11 @@ def search_name(parameters, data_type):
     global DATATYPE_TO_DB
 
     results = []
-    
+
+    # get the user results and also make sure 
+    # there exists a user profile to update
+    user_results = get_user_profile(session)["results"][data_type]
+
     for document in DATATYPE_TO_DB[data_type]:
         # skip if any parameter does not match
         if document['name'] == parameters['name']:

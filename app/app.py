@@ -138,8 +138,7 @@ def process_attraction(parameters, intent, session):
     This method handle all requests about attraction
     """
     if intent == "Attraction-Recommend - choose-name":
-        remove_user_data(session)
-        results = search_name(parameters, "attraction")
+        results = search_name_from_results(parameters, "attraction")
 
         if not results:
             return {
