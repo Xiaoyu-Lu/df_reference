@@ -144,8 +144,12 @@ def printout_detailed_result_openhour(result):
         report.append("Sorry, the openhours of the {} is not available.".format(result['name'].title()))
     return ''.join(report)
 
+
 def printout_detailed_result_postcode(result):
-    report = "{}.\n".format(result['postcode'])
+    report = andom.choice([
+                        "The postcode for {} is {}.".format(result['name'], result['postcode'].upper()),
+                        "Their postcode is {}.".format(result['postcode'].upper())
+                    ])
     return report
 
 def printout_detailed_result(result):
