@@ -164,7 +164,7 @@ def process_attraction(parameters, intent, session):
     """
     This method handle all requests about attraction
     """
-    if intent == "Attraction-Recommend - choose-name":
+    if intent == "Attraction-Recommend - choose-name" or "Attraction-Recommend - ask-more" :
         results = search_name_from_results(parameters, "attraction", session)
 
         if not results:
