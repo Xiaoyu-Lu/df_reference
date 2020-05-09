@@ -77,6 +77,8 @@ def search_name_from_database(parameters, data_type, session):
     global DATATYPE_TO_DB
 
     results = []
+    if not 'name' in parameters:
+        return None
     entity_name = parameters['name']
     for document in DATATYPE_TO_DB[data_type]:
         if document['name'] == entity_name:
