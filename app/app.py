@@ -164,7 +164,7 @@ def process_attraction(parameters, intent, session):
     """
     This method handle all requests about attraction
     """
-    if intent == "Attraction-Recommend - choose-name" or "Attraction-Recommend - ask-more" :
+    if intent == "Attraction-Recommend - ask-more":
         results = search_name_from_results(parameters, "attraction", session)
 
         if not results:
@@ -172,7 +172,33 @@ def process_attraction(parameters, intent, session):
             if not db_results:
                 return {
                     "fulfillmentText": random.choice([
-                        'im debugging'
+                        'im debugging-more'
+                        # "Unfortunately, I couldn't find any matching attraction for you. Could you try something different?",
+                        # "I'm sorry, but I wasn't able to find a matching attraction for you. Can you change some of your requests?"
+                    ])
+                }
+            report = printout_detailed_result_from_name(db_results[0])
+            return {
+                    "fulfillmentText": random.choice([
+                        "{}".format(report)
+                    ])
+                    }
+            
+        report = printout_detailed_result_from_name(results[0])
+        return {
+                "fulfillmentText": random.choice([
+                    "{}".format(report)
+                ])
+                }
+    if intent == "Attraction-Recommend - choose-name":
+        results = search_name_from_results(parameters, "attraction", session)
+
+        if not results:
+            db_results = search_name_from_database(parameters, "attraction", session)
+            if not db_results:
+                return {
+                    "fulfillmentText": random.choice([
+                        'im debugging-chosse'
                         # "Unfortunately, I couldn't find any matching attraction for you. Could you try something different?",
                         # "I'm sorry, but I wasn't able to find a matching attraction for you. Can you change some of your requests?"
                     ])
