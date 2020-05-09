@@ -294,10 +294,18 @@ def process_attraction(parameters, intent, session):
         if len(matched_results) > 1:
             report = []
             # provide them the first two to compare
-            report.append("I found two results for you. \n1) ")
-            report.append(printout_result(matched_results[0]))
-            report.append("\n2) ")
-            report.append(printout_result(matched_results[1]))
+            printout0 = printout_result(matched_results[0])
+            printout1 = printout_result(matched_results[1])
+            if printout1.split()[-4:-3] == printout0.split()[-4:-3]:
+                report.append("I found two results for you. \n1) ")
+                report.append(printout0)
+                report.append("\n2) ")
+                report.append(printout1 + " as well.")
+            else:
+                report.append("I found two results for you. \n1) ")
+                report.append(printout0)
+                report.append("\n2) ")
+                report.append(printout1)
             update_search_results_for_user(matched_results, "attraction", session)
             return {
                 "fulfillmentText":"{}\nWhich one do you prefer?".format(" ".join(report))
