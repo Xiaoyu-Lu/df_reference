@@ -12,6 +12,7 @@ from db import remove_user_data
 from db import search
 from db import get_user_profile
 from db import search_from_results
+from db import search_name_from_results
 
 
 app = Flask(__name__)
@@ -197,7 +198,7 @@ def process_attraction(parameters, intent, session):
                 index = 1
 
             report = printout_detailed_result(user_results[index])
-            update_search_results_for_user([user_results[index]], "attraction", session)
+            # update_search_results_for_user([user_results[index]], "attraction", session)
             return {
                 "fulfillmentText": random.choice([
                     "Cool :) {}".format(report),
