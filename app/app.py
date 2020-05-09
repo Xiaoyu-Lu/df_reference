@@ -172,8 +172,9 @@ def process_attraction(parameters, intent, session):
             if not db_results:
                 return {
                     "fulfillmentText": random.choice([
-                        "Unfortunately, I couldn't find any matching attraction for you. Could you try something different?",
-                        "Sorry, but I wasn't able to find a matching attraction for you. Can you change some of your requests?"
+                        'im debugging'
+                        # "Unfortunately, I couldn't find any matching attraction for you. Could you try something different?",
+                        # "I'm sorry, but I wasn't able to find a matching attraction for you. Can you change some of your requests?"
                     ])
                 }
             report = printout_detailed_result_from_name(db_results[0])
