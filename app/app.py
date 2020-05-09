@@ -138,6 +138,25 @@ def process_attraction(parameters, intent, session):
     This method handle all requests about attraction
     """
 
+    if intent ==  "Attraction-Recommend - choose-name":
+        update_search_results_for_user([], "attraction", session)
+        results = search_name(parameters, "attraction")
+
+        if not results:
+            return {
+                "fulfillmentText": random.choice([
+                    "Unfortunately, I couldn't find any matching attraction for you. Could you try something different?",
+                    "Sorry, but I wasn't able to find a matching attraction for you. Can you change some of your requests?"
+                ])
+            }
+        else:   
+            report = printout_detailed_result_from_name(results[0])
+            return {
+                    "fulfillmentText": random.choice([
+                        "{}".format(report)
+                    ])
+                    }
+
     if intent == "Attraction-Recommend - hours":
         user_results = get_user_profile(session)["results"]["attraction"]
 
@@ -248,25 +267,8 @@ def process_attraction(parameters, intent, session):
         # given by the user
         continue_search = True
 
-    if intent ==  "Attraction-Recommend - choose-name":
-        results = search_name(parameters, "attraction")
 
-        if not results:
-            return {
-                "fulfillmentText": random.choice([
-                    "Unfortunately, I couldn't find any matching attraction for you. Could you try something different?",
-                    "Sorry, but I wasn't able to find a matching attraction for you. Can you change some of your requests?"
-                ])
-            }
-        else:   
-            report = printout_detailed_result_from_name(results[0])
-            return {
-                    "fulfillmentText": random.choice([
-                        "{}".format(report)
-                    ])
-                    }
-
-    if intent in "Attraction-Recommend" or continue_search:
+    if intent == "Attraction-Recommend" or continue_search:
         if intent == "Attraction-Recommend":
             # update parameters
             # since this is the beginning of the conversation
