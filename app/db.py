@@ -52,10 +52,28 @@ def search_name_from_results(parameters, data_type, session):
     # there exists a user profile to update
     user_results = get_user_profile(session)["results"][data_type]
 
+    index = 0
     for document in DATATYPE_TO_DB[data_type]:
         # skip if any parameter does not match
         if document['name'] == parameters['name']:
             results.append(document)
+        index += 1
+
+    user_profile = get_user_profile(session)
+
+    # update profile
+    current_result = user_results.pop(index)
+    user_results.insert(0, current_result)
+    user_profile["results"][data_type] = user_results 
+
+    # search and update the database
+    for index, document in enumerate(DATATYPE_TO_DB["user"]):
+        if document["session"] == session:
+            DATATYPE_TO_DB["user"][index] = user_profile
+
+    # rewrite the db file with new results
+    with open('app/user_db.json', "w+") as user_db_file:
+        json.dump(DATATYPE_TO_DB["user"], user_db_file, indent=4)
 
     return results
 
