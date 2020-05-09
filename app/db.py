@@ -52,7 +52,7 @@ def search_name_from_results(parameters, data_type, session):
     # there exists a user profile to update
     user_results = get_user_profile(session)["results"][data_type]
 
-    index = 0
+    index = -1
     for document in DATATYPE_TO_DB[data_type]:
         index += 1
         if document['name'] == parameters['name']:
