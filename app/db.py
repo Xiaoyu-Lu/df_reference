@@ -48,7 +48,7 @@ def search_name_from_results(parameters, data_type, session):
         return None
 
     if len(user_results) == 1:
-        return user_results['name']
+        return user_results[0]['name']
 
     index = -1
     # for document in DATATYPE_TO_DB[data_type]:
