@@ -146,7 +146,7 @@ def printout_detailed_result_openhour(result):
 
 
 def printout_detailed_result_postcode(result):
-    report = andom.choice([
+    report = random.choice([
                         "The postcode for {} is {}.".format(result['name'], result['postcode'].upper()),
                         "Their postcode is {}.".format(result['postcode'].upper())
                     ])
