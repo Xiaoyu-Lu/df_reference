@@ -152,8 +152,7 @@ def process_attraction(parameters, intent, session):
         report = printout_detailed_result_from_name(results[0])
         return {
                 "fulfillmentText": random.choice([
-                    "I am debugging"
-                    # "{}".format(report)
+                    "{}".format(report)
                 ])
                 }
 
