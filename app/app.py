@@ -322,6 +322,11 @@ def process_attraction(parameters, intent, session):
 
     if intent == "Attraction-Recommend" or continue_search:
         if intent == "Attraction-Recommend":
+
+            user_results = get_user_profile(session)["results"]["attraction"]
+            if parameters['type'] != user_results['parameters']['type']:
+                remove_user_data(session)
+                
             # update parameters
             # since this is the beginning of the conversation
             # we should not ignore empty parameters because that is the user's initial request
