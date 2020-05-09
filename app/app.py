@@ -100,9 +100,9 @@ def printout_result(result):
                 ]))
     else:
         report.append(random.choice([
-                    "It has a {} entrance fee.\n".format(entrace_fee),
-                    "There will be a {} entrance fee.\n".format(entrace_fee),
-                    "It will cost you {}.\n".format(entrace_fee)
+                    "It has a {} entrance fee.\n".format(entrance_fee),
+                    "There will be a {} entrance fee.\n".format(entrance_fee),
+                    "It will cost you {}.\n".format(entrance_fee)
                 ]))
 
 
@@ -115,7 +115,6 @@ def printout_detailed_result_from_name(result):
                                                                                                               result['type'], result['area'],\
                                                                                                               result['entrance fee']))
     return ''.join(report)
-
 
 
 def printout_detailed_result_openhour(result):
