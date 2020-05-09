@@ -31,7 +31,7 @@ DATATYPE_TO_DB = {
     "user": USER_DB
 }
 
-def search_name_from_results(parameters, data_type):
+def search_name_from_results(parameters, data_type, session):
     """
     Use the parameters to find matching documents. 
 
