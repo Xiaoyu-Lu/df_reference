@@ -326,11 +326,11 @@ def process_attraction(parameters, intent, session):
 
         if len(results) == 1 and intent == "Attraction-Recommend - choose-name":
             report = printout_detailed_result_from_name(results[0])
-                return {
+            return {
                     "fulfillmentText": random.choice([
                         "{}".format(report)
                     ])
-                }
+                    }
 
         if len(results) == 1:
             report = printout_result(results[0])
