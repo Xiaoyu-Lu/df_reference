@@ -54,10 +54,11 @@ def search_name_from_results(parameters, data_type, session):
 
     index = 0
     for document in DATATYPE_TO_DB[data_type]:
-        # skip if any parameter does not match
+        index += 1
         if document['name'] == parameters['name']:
             results.append(document)
-        index += 1
+            break
+        
 
     user_profile = get_user_profile(session)
 
