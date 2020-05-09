@@ -122,7 +122,7 @@ def printout_detailed_result_from_name(result):
     elif entrance_fee == 'free':
         entrance_fee_result = random.choice([
                     "there is no entrance fee",
-                    "it doesn't have entrance fee."
+                    "it doesn't have an entrance fee."
                 ])
     else:
         entrance_fee_result = random.choice([
