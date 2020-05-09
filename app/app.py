@@ -300,7 +300,7 @@ def process_attraction(parameters, intent, session):
                 report.append("I found two results for you. \n1) ")
                 report.append(printout0)
                 report.append("\n2) ")
-                report.append(printout1 + " as well.")
+                report.append(printout1[:-1] + " as well.")
             else:
                 report.append("I found two results for you. \n1) ")
                 report.append(printout0)
