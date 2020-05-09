@@ -13,7 +13,7 @@ from db import search
 from db import get_user_profile
 from db import search_from_results
 from db import search_name_from_results
-
+from db import search_name_from_database
 
 app = Flask(__name__)
 
@@ -160,13 +160,21 @@ def process_attraction(parameters, intent, session):
         results = search_name_from_results(parameters, "attraction", session)
 
         if not results:
+            db_results = search_name_from_database(parameters, "attraction", session)
+            if not db_results:
+                return {
+                    "fulfillmentText": random.choice([
+                        "Unfortunately, I couldn't find any matching attraction for you. Could you try something different?",
+                        "Sorry, but I wasn't able to find a matching attraction for you. Can you change some of your requests?"
+                    ])
+                }
+            report = printout_detailed_result_from_name(db_results[0])
             return {
-                "fulfillmentText": random.choice([
-                    "Unfortunately, I couldn't find any matching attraction for you. Could you try something different?",
-                    "Sorry, but I wasn't able to find a matching attraction for you. Can you change some of your requests?"
-                ])
-            }
-        
+                    "fulfillmentText": random.choice([
+                        "{}".format(report)
+                    ])
+                    }
+            
         report = printout_detailed_result_from_name(results[0])
         return {
                 "fulfillmentText": random.choice([
@@ -339,6 +347,7 @@ def process_attraction(parameters, intent, session):
         if len(results) == 0:
             return {
                 "fulfillmentText": random.choice([
+                    "I am sorry but I do not have anything matching the criteria you specified. Would you be interested in expanding your field of search?"
                     "Unfortunately, I couldn't find any matching attraction for you. Could you try something different?",
                     "Sorry, but I wasn't able to find a matching attraction for you. Can you change some of your requests?"
                 ])

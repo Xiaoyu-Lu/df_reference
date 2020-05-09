@@ -33,15 +33,7 @@ DATATYPE_TO_DB = {
 
 def search_name_from_results(parameters, data_type, session):
     """
-    Use the parameters to find matching documents. 
-
-    Please make sure that the keys in parameters have the same name
-    in the database. Entity names are DIFFERENT from databse field names.
-
-    Also, parameters with empty values will be IGNORED.
-
-    Just remember, process the parameters given by Dialogflow before passing
-    it to this search method.
+    Use the parameters to find matching documents by name in user's database.
     """
 
     global DATATYPE_TO_DB
@@ -65,10 +57,35 @@ def search_name_from_results(parameters, data_type, session):
 
     user_profile = get_user_profile(session)
     # update profile
-    current_result = user_results.pop(index)
-    user_results.insert(0, current_result)
-    user_profile["results"][data_type] = user_results 
+ 
+    # search and update the database
+    for index, document in enumerate(DATATYPE_TO_DB["user"]):
+        if document["session"] == session:
+            DATATYPE_TO_DB["user"][index] = user_profile
 
+    # rewrite the db file with new results
+    with open('app/user_db.json', "w+") as user_db_file:
+        json.dump(DATATYPE_TO_DB["user"], user_db_file, indent=4)
+
+    return results
+
+def search_name_from_database(parameters, data_type, session):
+    """
+    Use the parameters to find matching documents by namee in database.
+    """
+
+    global DATATYPE_TO_DB
+
+    results = []
+    entity_name = parameters['name']
+    for document in DATATYPE_TO_DB[data_type]:
+        if document['name'] == entity_name:
+            results.append(document)
+            break
+
+    user_profile = get_user_profile(session)
+    user_profile["results"][data_type] = results if len(results) > 0 else None
+    user_profile["parameters"]["name"] = entity_name
     # search and update the database
     for index, document in enumerate(DATATYPE_TO_DB["user"]):
         if document["session"] == session:
