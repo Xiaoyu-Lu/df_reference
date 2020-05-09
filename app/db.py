@@ -30,6 +30,15 @@ DATATYPE_TO_DB = {
     "attraction": ATTRACTION_DB,
     "user": USER_DB
 }
+def search_it_from_results(parameters, data_type, session):
+    """
+    Choose the first result if there is any.
+    """
+
+    user_results = get_user_profile(session)["results"][data_type]
+    if not user_results:
+        return None
+    return [user_results[0]]
 
 def search_name_from_results(parameters, data_type, session):
     """
