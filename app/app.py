@@ -248,6 +248,24 @@ def process_attraction(parameters, intent, session):
         # given by the user
         continue_search = True
 
+    if intent ==  "Attraction-Recommend - choose-name":
+        results = search_name(parameters, "attraction")
+
+        if not results:
+            return {
+                "fulfillmentText": random.choice([
+                    "Unfortunately, I couldn't find any matching attraction for you. Could you try something different?",
+                    "Sorry, but I wasn't able to find a matching attraction for you. Can you change some of your requests?"
+                ])
+            }
+        else:   
+            report = printout_detailed_result_from_name(results[0])
+            return {
+                    "fulfillmentText": random.choice([
+                        "{}".format(report)
+                    ])
+                    }
+
     if intent in "Attraction-Recommend" or continue_search:
         if intent == "Attraction-Recommend":
             # update parameters
@@ -322,14 +340,6 @@ def process_attraction(parameters, intent, session):
                     "No problem! There are {} attractions that match your needs. Could you help narrow it down with more information?".format(len(results)),
                 ])
             }
-
-        if len(results) == 1 and intent == "Attraction-Recommend - choose-name":
-            report = printout_detailed_result_from_name(results[0])
-            return {
-                    "fulfillmentText": random.choice([
-                        "{}".format(report)
-                    ])
-                    }
 
         if len(results) == 1:
             report = printout_result(results[0])

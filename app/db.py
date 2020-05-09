@@ -31,6 +31,44 @@ DATATYPE_TO_DB = {
     "user": USER_DB
 }
 
+def search_name(parameters, data_type):
+    """
+    Use the parameters to find matching documents. 
+
+    Please make sure that the keys in parameters have the same name
+    in the database. Entity names are DIFFERENT from databse field names.
+
+    Also, parameters with empty values will be IGNORED.
+
+    Just remember, process the parameters given by Dialogflow before passing
+    it to this search method.
+    """
+
+    global DATATYPE_TO_DB
+
+    results = []
+
+    # delete empty parameters
+    non_empty_parameters = dict()
+    for field in parameters:
+        if len(parameters[field].strip()) > 0:
+            non_empty_parameters[field] = parameters[field]
+    # print('para',non_empty_parameters)
+    for document in DATATYPE_TO_DB[data_type]:
+        # skip if any parameter does not match
+        is_not_a_match = False
+        for field in non_empty_parameters:
+            if document[field] != non_empty_parameters[field]:
+                is_not_a_match = True
+                break
+
+        if is_not_a_match:
+            continue
+        
+        results.append(document)
+
+    return results
+
 def search(parameters, data_type):
     """
     Use the parameters to find matching documents. 
