@@ -273,8 +273,8 @@ def process_attraction(parameters, intent, session):
             update_search_results_for_user(matched_results, "attraction", session)
             return {
                 "fulfillmentText": random.choice([
-                    "{}".format(" ".join(report)),
-                    "{}".format(" ".join(report))
+                    "{}".format(report),
+                    "{}".format(report)
                 ])
             }
 
