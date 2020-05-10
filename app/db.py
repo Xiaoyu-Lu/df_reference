@@ -30,6 +30,34 @@ DATATYPE_TO_DB = {
     "attraction": ATTRACTION_DB,
     "user": USER_DB
 }
+
+
+
+def update_the_order_in_results(results, session, chose_index):
+    global DATATYPE_TO_DB
+
+    # length of user_results > 1
+    tmp = results.pop(chose_index) 
+    results.insert(0, tmp)
+
+    # get the user profile 
+    user_profile = get_user_profile(session)
+
+    # update profile
+    user_profile["results"][data_type] = results
+
+    # search and update the database
+    for index, document in enumerate(DATATYPE_TO_DB["user"]):
+        if document["session"] == session:
+            DATATYPE_TO_DB["user"][index] = user_profile
+
+    # rewrite the db file with new results
+    with open('app/user_db.json', "w+") as user_db_file:
+        json.dump(DATATYPE_TO_DB["user"], user_db_file, indent=4)
+
+    return results
+
+
 def search_it_from_results(parameters, data_type, session):
     """
     Choose the first result if there is any.
@@ -60,7 +88,7 @@ def search_name_from_results(parameters, data_type, session):
         return user_results
 
     index = -1
-    # for document in DATATYPE_TO_DB[data_type]:
+
     for document in user_results:
         index += 1
         if document['name'] == parameters['name']:

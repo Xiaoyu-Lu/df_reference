@@ -263,7 +263,8 @@ def process_attraction(parameters, intent, session):
                 index = 1
 
             report = printout_detailed_result(user_results[index])
-            # update_search_results_for_user([user_results[index]], "attraction", session)
+            update_the_order_in_results(results, session, index)
+            
             return {
                 "fulfillmentText": random.choice([
                     "Cool :) {}".format(report),
@@ -416,7 +417,7 @@ def process_attraction(parameters, intent, session):
         if len(results) == 0:
             return {
                 "fulfillmentText": random.choice([
-                    "I am sorry but I do not have anything matching the criteria you specified. Would you be interested in expanding your field of search?"
+                    "I am sorry but I do not have anything matching the criteria you specified. Would you be interested in expanding your field of search?",
                     "Unfortunately, I couldn't find any matching attraction for you. Could you try something different?",
                     "Sorry, but I wasn't able to find a matching attraction for you. Can you change some of your requests?"
                 ])
