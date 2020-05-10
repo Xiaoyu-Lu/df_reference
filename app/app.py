@@ -85,7 +85,7 @@ def printout_result(result):
     report.append(random.choice([
                     "I like this one. The {} is located in the {} of the Cambridge.\n".format(result['name'].title(), result['area']),
                     "Hey, this one is famous. The {} is in the {} of the Cambridge.\n".format(result['name'].title(), result['area']),
-                    "I recommend this one. The {} is in the {} of the Cambridge.\n".format(result['name'].title(), result['area'])
+                    "I recommend this one. The {} is in the {} of the Cambridge.".format(result['name'].title(), result['area'])
                 ]))
 
     # entrance_fee = result['entrance fee']
@@ -98,7 +98,7 @@ def printout_result(result):
     # elif entrance_fee == 'free':
     #     report.append(random.choice([
     #                 "There is no entrance fee",
-    #                 "It doesn't have entrance fee."
+    #                 "It doesn't have an entrance fee."
     #             ]))
     # else:
     #     report.append(random.choice([
