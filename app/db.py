@@ -44,7 +44,7 @@ def update_the_order_in_results(results, session, chose_index):
     user_profile = get_user_profile(session)
 
     # update profile
-    user_profile["results"][data_type] = results
+    user_profile["results"]["attraction"] = results
 
     # search and update the database
     for index, document in enumerate(DATATYPE_TO_DB["user"]):
