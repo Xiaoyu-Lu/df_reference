@@ -15,6 +15,7 @@ from db import search_from_results
 from db import search_name_from_results
 from db import search_name_from_database
 from db import search_it_from_results
+from db import update_the_order_in_results
 
 app = Flask(__name__)
 
@@ -264,7 +265,7 @@ def process_attraction(parameters, intent, session):
 
             report = printout_detailed_result(user_results[index])
             update_the_order_in_results(results, session, index)
-            
+
             return {
                 "fulfillmentText": random.choice([
                     "Cool :) {}".format(report),
