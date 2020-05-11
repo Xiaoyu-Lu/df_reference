@@ -75,7 +75,7 @@ def search_name_from_results(parameters, data_type, session):
 
     global DATATYPE_TO_DB
 
-    results = []
+    # results = []
 
     # get the user results and also make sure 
     # there exists a user profile to update
@@ -87,17 +87,23 @@ def search_name_from_results(parameters, data_type, session):
     if len(user_results) == 1:
         return user_results
 
-    index = -1
+    chose_index = -1
 
     for document in user_results:
-        index += 1
+        chose_index += 1
         if document['name'] == parameters['name']:
-            results.append(document)
+            # results.append(document)
             break
 
+    tmp = user_results.pop(chose_index) 
+    user_results.insert(0, tmp)
+
+    # get the user profile 
     user_profile = get_user_profile(session)
+
     # update profile
- 
+    user_profile["results"]["attraction"] = user_results
+
     # search and update the database
     for index, document in enumerate(DATATYPE_TO_DB["user"]):
         if document["session"] == session:
@@ -107,7 +113,7 @@ def search_name_from_results(parameters, data_type, session):
     with open('app/user_db.json', "w+") as user_db_file:
         json.dump(DATATYPE_TO_DB["user"], user_db_file, indent=4)
 
-    return results
+    return user_results
 
 def search_name_from_database(parameters, data_type, session):
     """
