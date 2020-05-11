@@ -264,7 +264,7 @@ def process_attraction(parameters, intent, session):
                 index = 1
 
             report = printout_detailed_result(user_results[index])
-            update_the_order_in_results(results, session, index)
+            update_the_order_in_results(user_results, session, index)
 
             return {
                 "fulfillmentText": random.choice([
