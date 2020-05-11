@@ -84,8 +84,8 @@ def search_name_from_results(parameters, data_type, session):
     if not user_results:
         return None
 
-    if len(user_results) == 1:
-        return user_results
+    # if len(user_results) == 1:
+    #     return user_results
 
     chose_index = -1
 
@@ -94,6 +94,10 @@ def search_name_from_results(parameters, data_type, session):
         if document['name'] == parameters['name']:
             # results.append(document)
             break
+            
+    # force it to check the whole corpus
+    if chose_index == -1:
+        return None
 
     tmp = user_results.pop(chose_index) 
     user_results.insert(0, tmp)
