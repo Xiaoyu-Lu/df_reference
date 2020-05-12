@@ -74,7 +74,7 @@ A8: It's located at Fulbourn. It's a museum in the city's east and it doesn't ha
 U9: can i have their postcode
 A9: ...Here it is: Their postcode is CB15DH.
 U10: thank you
-A10:Thank you! We're looking forward to assisting you again.
+A10: Thank you! We're looking forward to assisting you again.
 ```
 
 
