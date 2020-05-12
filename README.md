@@ -48,7 +48,14 @@ A4: It's located at Lensfield road. It's a museum in the city's centre and there
 U5: when does it open
 A5: Good question. It opens from 10:00 a.m. to 4:00 p.m. from tuesday to saturday.
 ```
-
+```
+U1: I'm also looking for places to go in town that is in the west.
+A1: What type of attraction are you looking for? museum, college or nightclub?
+U2: Are there any museum types?
+A2: No problem! There are 7 attractions that match your needs. Could you help narrow it down with more information?
+U3: Choose those in the moderate price range.
+A3: Hey, this one is famous. The Cambridge And County Folk Museum is in the west of the Cambridge.
+```
 
 ```
 U1: is there any free museums in town?
