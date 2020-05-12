@@ -84,8 +84,8 @@ def printout_result(result):
     # PARA = ["address", "area", "entrance fee", "location", "name", "openhours", "phone", "postcode", "pricerange", "type"]
     report = []
     report.append(random.choice([
-                    "I like this one. The {} is located in the {} of the Cambridge.\n".format(result['name'].title(), result['area']),
-                    "Hey, this one is famous. The {} is in the {} of the Cambridge.\n".format(result['name'].title(), result['area']),
+                    "I like this one. The {} is located in the {} of the Cambridge.".format(result['name'].title(), result['area']),
+                    "Hey, this one is famous. The {} is in the {} of the Cambridge.".format(result['name'].title(), result['area']),
                     "I recommend this one. The {} is in the {} of the Cambridge.".format(result['name'].title(), result['area'])
                 ]))
 
