@@ -60,7 +60,7 @@ A2: I found two results for you.
    Which one do you prefer?
 U3: the second one please
 A3: Nice Choice! The number of Gallery At Twelve A High Street is 01223295264. The address is fulbourn.
-U4: more information
+U4: Can you give me more information about it?
 A4: It's located at Fulbourn. 
     It's a museum in the city's east and it doesn't have an entrance fee..
 U5: the other one?
