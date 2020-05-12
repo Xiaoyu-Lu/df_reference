@@ -16,24 +16,6 @@ Hello! How can I help you? My name is DL and I am the virtual assistant of findi
 What type of attractions at what price range are you looking for?
 ```
 ```
-U1: Are there any cheap nightclubs in Cambridge?
-A1: I recommand this one. The Soul Tree Nightclub is located in the centre of the Cambridge. There will be 4 pounds entrance fee.
-U2: when does it open?
-A2: Yeah.. It opens from 9:30 p.m. to 02:00 a.m. from sunday to tuesday, from 9:00 p.m. to 02:00 a.m. on wednesday, and from 9:00 p.m. to 02:30 a.m. from thursday to saturday.
-```
-```
-U1: i'm looking for a place called kambar
-A1: It's located at 1 wheeler street. It's a nightclub in the city's centre and it has a 5 pounds entrance fee. .
-U2: Please give me their postcode
-A2: Yeah.. Their postcode is CB23QB.
-U3: when does it open
-A3: ...Here it is: It opens from 10:00 p.m. to 4:00 a.m. depending on whether there is an event on or not.
-U4: Great, can you tell me where the scott polar museum is please?
-A4: It's located at Lensfield road. It's a museum in the city's centre and there is no entrance fee.
-U5: when does it open
-A5: Good question. It opens from 10:00 a.m. to 4:00 p.m. from tuesday to saturday.
-```
-```
 U1: Are there any cheap nightclubs in town?
 A1: I found it! I recommend this one. The Soul Tree Nightclub is in the centre of the Cambridge.
 U2: how about boat events?
@@ -54,6 +36,19 @@ A7: ..Here it is: Sorry, the openhours of the The Cambridge Punter is not availa
 U8: cool, that's it.
 A8: Thank you for using our service.
 ```
+```
+U1: i'm looking for a place called kambar
+A1: It's located at 1 wheeler street. It's a nightclub in the city's centre and it has a 5 pounds entrance fee. .
+U2: Please give me their postcode
+A2: Yeah.. Their postcode is CB23QB.
+U3: when does it open
+A3: ...Here it is: It opens from 10:00 p.m. to 4:00 a.m. depending on whether there is an event on or not.
+U4: Great, can you tell me where the scott polar museum is please?
+A4: It's located at Lensfield road. It's a museum in the city's centre and there is no entrance fee.
+U5: when does it open
+A5: Good question. It opens from 10:00 a.m. to 4:00 p.m. from tuesday to saturday.
+```
+
 
 ```
 U1: is there any free museums in town?
