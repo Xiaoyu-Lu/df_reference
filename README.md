@@ -12,9 +12,15 @@ Reference with definite noun phrases (definite NPs) in attraction task-oriented 
 ## Demos
 
 ```
-Hello! How can I help you? My name is DL and I am the virtual assistant of finding attractions in Cambridge. What type of attractions at what price range are you looking for?
+Hello! How can I help you? My name is DL and I am the virtual assistant of finding attractions in Cambridge.
+What type of attractions at what price range are you looking for?
 ```
-
+```
+U1: Are there any cheap nightclubs in Cambridge?
+A1: I recommand this one. The Soul Tree Nightclub is located in the centre of the Cambridge. There will be 4 pounds entrance fee.
+U2: when does it open?
+A2: Yeah.. It opens from 9:30 p.m. to 02:00 a.m. from sunday to tuesday, from 9:00 p.m. to 02:00 a.m. on wednesday, and from 9:00 p.m. to 02:30 a.m. from thursday to saturday.
+```
 ```
 U1: i'm looking for a place called kambar
 A1: It's located at 1 wheeler street. It's a nightclub in the city's centre and it has a 5 pounds entrance fee. .
@@ -35,7 +41,8 @@ A2: Wow! I see there are 4 boats that match your needs. Can you add more informa
 U3: the one hosted in the centre
 A3: I found two results for you. 
   1) I recommend this one. The Scudamores Punting Co is in the centre of the Cambridge.
-  2) I like this one. The The Cambridge Punter is in the centre of the Cambridge as well. Which one do you prefer?
+  2) I like this one. The The Cambridge Punter is in the centre of the Cambridge as well.
+  Which one do you prefer?
 U4: tell me more about the latter 
 A4: Cool :) The number of The Cambridge Punter is 07807718591. The address is 251a chesterton road.
 U5: great. could i have their postcode
