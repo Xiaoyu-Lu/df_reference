@@ -1,5 +1,6 @@
 # df_reference
-CS136 Automated Speech Recognition(ASR) final project
+CS136 Automated Speech Recognition(ASR) final project (Dom & Xiaoyu)
+
 Dialogflow Backend
 
 ## Intro
